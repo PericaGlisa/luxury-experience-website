@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { NewsletterSection } from "@/components/newsletter-section"
@@ -7,7 +8,9 @@ export default function JournalPage() {
   return (
     <main className="min-h-screen bg-[#F7F4EE]">
       <Header />
-      <JournalContent />
+      <Suspense fallback={<div className="py-10 text-center text-[#5A6B70]">Loading journal...</div>}>
+        <JournalContent />
+      </Suspense>
       <NewsletterSection />
       <Footer />
     </main>
