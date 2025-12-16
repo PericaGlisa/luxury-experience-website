@@ -19,6 +19,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://luxury-experience-website.netlify.app"),
   title: "Maestrale | Luxury Sardinia Travel & Experiences",
   description:
     "Maestrale kreira luksuzna putovanja na Sardiniju za goste iz Srbije, regiona ExYu i celog Balkana, sa privatnim vilama, jahtama, skrivenim mestima i personalizovanim itinererima.",
