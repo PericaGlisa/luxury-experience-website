@@ -44,9 +44,9 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="Maestrale Luxury Experience"
-            width={240}
-            height={120}
-            className="h-24 md:h-32 w-auto"
+            width={320}
+            height={160}
+            className="h-28 md:h-40 w-auto"
             priority
           />
         </Link>

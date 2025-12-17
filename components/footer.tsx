@@ -37,9 +37,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="Maestrale Luxury Experience"
-                width={260}
-                height={120}
-                className="h-28 md:h-32 w-auto mb-4 brightness-0 invert cursor-pointer"
+                width={340}
+                height={160}
+                className="h-32 md:h-44 w-auto mb-4 brightness-0 invert cursor-pointer"
               />
             </Link>
             <p className="text-sm text-[#FFFEF9]/70 leading-relaxed mb-6">{t("footerDescription")}</p>

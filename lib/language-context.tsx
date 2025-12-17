@@ -63,7 +63,7 @@ const translations = {
     bookNow: "Isplanirajte put na Sardiniju",
     // Hero
     heroTitle: "Vaše putovanje na Sardiniju",
-    heroTitleLine2: "iskrojeno samo za vas",
+    heroTitleLine2: "skrojeno samo za vas",
     heroDescription:
       "Mi za vas osmišljavamo putovanja na Sardiniju, privatne vile, jahte, skrivene plaže i vinske rute, skrojene prema vašem tempu i željama.",
     exploreMore: "Istražite iskustva na Sardiniji",
