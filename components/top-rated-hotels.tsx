@@ -97,14 +97,10 @@ export function TopRatedHotels() {
                     <h3 className="font-serif text-lg font-medium mb-1 group-hover:text-[#C9A962] transition-colors">
                       {hotel.name}
                     </h3>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center">
                       <div className="flex items-center gap-1 text-sm">
                         <MapPin className="w-3.5 h-3.5 text-[#C9A962]" />
                         <span className="opacity-90">{hotel.location}</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-lg font-semibold text-[#C9A962]">${hotel.price}</span>
-                        <span className="text-xs opacity-75">/{t("night")}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-2">

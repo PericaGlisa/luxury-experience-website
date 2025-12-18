@@ -251,11 +251,7 @@ export function ExperienceDetail({ id }: { id: string }) {
             <p className="text-[#5A6B70] text-lg leading-relaxed mb-8">
               {experience.description[language as "en" | "sr"]}
             </p>
-            <div className="flex items-center gap-6">
-              <div className="flex flex-col">
-                <span className="text-sm text-[#5A6B70] mb-1">{language === "sr" ? "Cena od" : "Price from"}</span>
-                <span className="text-2xl font-serif text-[#1B4B5A]">${experience.price}</span>
-              </div>
+            <div className="flex items-center">
               <Link href="#experience-booking">
                 <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-6 h-auto text-lg">
                   {language === "sr" ? "Zatražite rezervaciju" : "Request Booking"}

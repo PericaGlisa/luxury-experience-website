@@ -251,16 +251,10 @@ export function DestinationDetail({ id }: { id: string }) {
                             <h4 className="font-serif text-base font-medium mb-1 group-hover:text-[#C9A962] transition-colors">
                               {hotel.name}
                             </h4>
-                            <div className="flex items-center justify-between text-xs">
+                            <div className="flex items-center text-xs">
                               <div className="flex items-center gap-1">
                                 <MapPin className="w-3 h-3 text-[#C9A962]" />
                                 <span className="opacity-90">{hotel.location}</span>
-                              </div>
-                              <div className="text-right">
-                                <span className="text-sm font-semibold text-[#C9A962]">${hotel.price}</span>
-                                <span className="text-[10px] opacity-75">
-                                  /{language === "sr" ? "noć" : "night"}
-                                </span>
                               </div>
                             </div>
                           </div>

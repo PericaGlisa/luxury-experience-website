@@ -120,11 +120,7 @@ export function ExperiencesContent() {
                 </div>
                 <h3 className="font-serif text-xl text-[#1B4B5A] mb-2 group-hover:text-[#C9A962] transition-colors">{exp.title}</h3>
                 <p className="text-sm text-[#5A6B70] mb-4 line-clamp-2">{exp.description}</p>
-                <div className="flex items-center justify-between">
-                  <p className="text-[#1B4B5A]">
-                    <span className="text-xl font-semibold text-[#C9A962]">${exp.price}</span>
-                    <span className="text-sm text-[#5A6B70]">/{language === "sr" ? "osobi" : "person"}</span>
-                  </p>
+                <div className="flex items-center justify-end">
                   <Button size="sm" className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-4 pointer-events-none">
                     {language === "sr" ? "Detalji" : "Details"}
                     <ArrowUpRight className="w-4 h-4 ml-1" />

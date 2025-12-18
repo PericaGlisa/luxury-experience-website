@@ -207,13 +207,20 @@ export function HeroSection() {
               {/* Preferred Date */}
               <div className="flex items-center gap-3 px-4 py-4 border border-[#E8E0D0] rounded-xl bg-[#FFFEF9] focus-within:border-[#1B4B5A] transition-colors">
                 <Calendar className="w-5 h-5 text-[#5A6B70] shrink-0" />
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="flex-1 bg-transparent text-sm text-[#1B4B5A] placeholder:text-[#8A9499] focus:outline-none"
-                />
+                <div className="relative flex-1">
+                  {!formData.date && (
+                    <span className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-sm text-[#8A9499] lg:hidden">
+                      {language === "sr" ? "Preferirani datum" : "Preferred date"}
+                    </span>
+                  )}
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="w-full bg-transparent text-sm text-[#1B4B5A] focus:outline-none"
+                  />
+                </div>
               </div>
 
               {/* Destination */}

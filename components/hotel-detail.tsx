@@ -223,14 +223,6 @@ export function HotelDetail({ id }: { id: string }) {
           {/* Booking Card */}
           <div className="lg:col-span-1">
             <div className="sticky top-28 bg-white rounded-3xl p-6 shadow-lg border border-[#E8E4DC]">
-              <div className="text-center mb-6">
-                <p className="text-sm text-[#5A6B70] mb-1">{language === "sr" ? "Od" : "From"}</p>
-                <p className="font-serif text-3xl text-[#1B4B5A]">
-                  <span className="text-[#C9A962]">${hotel.price}</span>
-                  <span className="text-base font-normal text-[#5A6B70]">/{language === "sr" ? "noć" : "night"}</span>
-                </p>
-              </div>
-
               <div className="mb-6">
                 <p className="text-sm text-[#5A6B70] text-center">
                   {language === "sr"

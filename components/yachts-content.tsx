@@ -119,13 +119,7 @@ export function YachtsContent() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <p className="text-[#1B4B5A]">
-                      <span className="text-xl font-semibold text-[#C9A962]">
-                        ${yacht.pricePerDay.toLocaleString()}
-                      </span>
-                      <span className="text-sm text-[#5A6B70]">/{language === "sr" ? "dan" : "day"}</span>
-                    </p>
+                  <div className="flex items-center justify-end">
                     <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-5">
                       {language === "sr" ? "Detalji" : "Details"}
                       <ArrowUpRight className="w-4 h-4 ml-1" />
