@@ -1,32 +1,66 @@
 "use client"
 
 import { useEffect } from "react"
-import Cal, { getCalApi } from "@calcom/embed-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
+
+declare global {
+  interface Window {
+    Cal: any;
+  }
+}
 
 export default function BookingPage() {
   const { language } = useLanguage()
 
   useEffect(() => {
-    ;(async function () {
-      const cal = await getCalApi({ namespace: "15min", origin: "https://app.cal.eu" })
-      cal("ui", {
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#1B4B5A" },
-          dark: { "cal-brand": "#C9A962" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      })
+    (function (C: any, A: string, L: string) {
+      let p = function (a: any, ar: any) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api: any = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.eu/embed/embed.js", "init");
 
-      cal("inline", {
-        elementOrSelector: "#cal-booking-embed",
+    if (window.Cal) {
+      window.Cal("init", "15min", { origin: "https://app.cal.eu" });
+
+      window.Cal.ns["15min"]("inline", {
+        elementOrSelector: "#my-cal-inline-15min",
+        config: { "layout": "month_view", "theme": "light" },
         calLink: "maestralelux/15min",
-        config: { layout: "month_view", theme: "light" },
-      })
-    })()
+      });
+
+      window.Cal.ns["15min"]("ui", {
+        "theme": "light",
+        "cssVarsPerTheme": {
+          "light": { "cal-brand": "#1B4B5A" },
+          "dark": { "cal-brand": "#C9A962" }
+        },
+        "hideEventTypeDetails": false,
+        "layout": "month_view"
+      });
+    }
   }, [])
 
   return (
@@ -51,8 +85,8 @@ export default function BookingPage() {
 
           <div className="bg-white rounded-3xl p-4 md:p-8 shadow-sm overflow-hidden min-h-[600px]">
             <div 
-              id="cal-booking-embed" 
-              style={{ width: "100%", height: "100%", minHeight: "600px" }}
+              id="my-cal-inline-15min" 
+              style={{ width: "100%", height: "100%", minHeight: "600px", overflow: "scroll" }}
             />
           </div>
         </div>
