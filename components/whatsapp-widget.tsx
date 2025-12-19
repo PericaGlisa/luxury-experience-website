@@ -35,12 +35,12 @@ export function WhatsAppWidget() {
         <div className="bg-[#C9A962] p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-14 h-14 rounded-full bg-white border border-white/20 overflow-hidden shadow-sm relative flex items-center justify-center">
-              <div className="relative w-[85%] h-[85%]">
+              <div className="relative w-[115%] h-[115%] flex items-center justify-center">
                 <Image
                   src="/logo.png"
                   alt="Maestrale Logo"
                   fill
-                  className="object-contain object-center"
+                  className="object-contain scale-150"
                   priority
                 />
               </div>
