@@ -85,15 +85,15 @@ export default function BookingPage() {
           {/* Header Section with Premium Accents */}
           <div className="text-center mb-16 relative">
             <div className="flex justify-center mb-6">
-              <div className="bg-white/50 backdrop-blur-sm border border-[#C9A962]/20 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-sm">
+              <div className="bg-[#1B4B5A]/10 rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
                 <Sparkles className="w-4 h-4 text-[#C9A962]" />
-                <span className="text-[#C9A962] text-[10px] md:text-xs font-medium tracking-[0.2em] uppercase">
+                <span className="text-sm font-medium text-[#1B4B5A]">
                   {language === "sr" ? "Ekskluzivni Termini" : "Exclusive Availability"}
                 </span>
               </div>
             </div>
             
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-light text-[#1B4B5A] mb-8 tracking-tight leading-[1.1]">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-[#1B4B5A] mb-6 leading-tight tracking-tight text-balance">
               {language === "sr" ? (
                 <>Zakažite <span className="italic">Vaš</span> Trenutak</>
               ) : (
@@ -101,7 +101,7 @@ export default function BookingPage() {
               )}
             </h1>
             
-            <p className="text-[#5A6B70] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-[#5A6B70] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               {language === "sr"
                 ? "Personalizovane konsultacije kreirane prema vašim potrebama. Odaberite vreme za razgovor o vašem sledećem luksuznom iskustvu."
                 : "Personalized consultations tailored to your needs. Select a time to discuss your next luxury experience."}
@@ -152,22 +152,22 @@ export default function BookingPage() {
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-[#F7F4EE]">
                 <Calendar className="w-6 h-6 text-[#1B4B5A]" />
               </div>
-              <h3 className="font-serif text-[#1B4B5A] text-lg mb-2">{language === "sr" ? "Fleksibilnost" : "Flexibility"}</h3>
-              <p className="text-[#8A9499] text-sm font-light">{language === "sr" ? "Lako otkažite ili promenite termin" : "Easy cancellation or rescheduling"}</p>
+              <h3 className="font-serif text-[#1B4B5A] text-xl font-medium mb-2">{language === "sr" ? "Fleksibilnost" : "Flexibility"}</h3>
+              <p className="text-[#5A6B70] text-sm leading-relaxed">{language === "sr" ? "Lako otkažite ili promenite termin" : "Easy cancellation or rescheduling"}</p>
             </div>
             <div className="p-6">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-[#F7F4EE]">
                 <ShieldCheck className="w-6 h-6 text-[#1B4B5A]" />
               </div>
-              <h3 className="font-serif text-[#1B4B5A] text-lg mb-2">{language === "sr" ? "Sigurnost" : "Security"}</h3>
-              <p className="text-[#8A9499] text-sm font-light">{language === "sr" ? "Vaši podaci su potpuno zaštićeni" : "Your data is fully protected"}</p>
+              <h3 className="font-serif text-[#1B4B5A] text-xl font-medium mb-2">{language === "sr" ? "Sigurnost" : "Security"}</h3>
+              <p className="text-[#5A6B70] text-sm leading-relaxed">{language === "sr" ? "Vaši podaci su potpuno zaštićeni" : "Your data is fully protected"}</p>
             </div>
             <div className="p-6">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-[#F7F4EE]">
                 <Sparkles className="w-6 h-6 text-[#1B4B5A]" />
               </div>
-              <h3 className="font-serif text-[#1B4B5A] text-lg mb-2">{language === "sr" ? "Premium Podrška" : "Premium Support"}</h3>
-              <p className="text-[#8A9499] text-sm font-light">{language === "sr" ? "Direktan pristup našem timu" : "Direct access to our expert team"}</p>
+              <h3 className="font-serif text-[#1B4B5A] text-xl font-medium mb-2">{language === "sr" ? "Premium Podrška" : "Premium Support"}</h3>
+              <p className="text-[#5A6B70] text-sm leading-relaxed">{language === "sr" ? "Direktan pristup našem timu" : "Direct access to our expert team"}</p>
             </div>
           </div>
         </div>
