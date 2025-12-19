@@ -6,6 +6,8 @@ import Image from "next/image"
 import { Globe, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { cn } from "@/lib/utils"
+import { useEffect } from "react"
 
 const navItems = {
   en: [
@@ -32,6 +34,17 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [mobileMenuOpen])
 
   const currentNavItems = navItems[language]
 
@@ -117,51 +130,104 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden mt-4 p-6 bg-white/95 backdrop-blur-sm rounded-3xl shadow-lg">
-          <div className="flex flex-col gap-4">
-            {currentNavItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-base font-medium text-[#1B4B5A] py-2"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  handleLinkClick()
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="flex gap-2 py-2">
-              <button
-                onClick={() => setLanguage("sr")}
-                className={`px-4 py-2 rounded-full text-sm ${language === "sr" ? "bg-[#1B4B5A] text-white" : "bg-[#F0EDE5] text-[#5A6B70]"}`}
-              >
-                SR
-              </button>
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-4 py-2 rounded-full text-sm ${language === "en" ? "bg-[#1B4B5A] text-white" : "bg-[#F0EDE5] text-[#5A6B70]"}`}
-              >
-                EN
-              </button>
-            </div>
-            <Link
-              href="/booking"
-              onClick={() => {
-                setMobileMenuOpen(false)
-                handleLinkClick()
-              }}
-            >
-              <Button className="mt-4 w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-3">
-                {t("bookNow")}
-              </Button>
+      {/* Mobile Menu Overlay */}
+      <div
+        className={cn(
+          "fixed inset-0 bg-white/98 backdrop-blur-md z-50 lg:hidden transition-all duration-300 ease-in-out",
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex flex-col h-full">
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between px-5 py-5 border-b border-[#F7F4EE]">
+            <Link href="/" className="flex items-center" onClick={() => {
+              setMobileMenuOpen(false)
+              handleLinkClick()
+            }}>
+              <Image
+                src="/logo.png"
+                alt="Maestrale Logo"
+                width={160}
+                height={80}
+                className="h-16 w-auto"
+                priority
+              />
             </Link>
+            <button
+              className="p-2 rounded-full bg-[#1B4B5A] text-white"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Items - Scrollable area */}
+          <div className="flex-1 overflow-y-auto px-6 py-8">
+            <div className="flex flex-col gap-6">
+              {currentNavItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-2xl font-medium text-[#1B4B5A] border-b border-[#F7F4EE] pb-4"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    handleLinkClick()
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              
+              <div className="pt-4 flex flex-col gap-6">
+                <div className="flex flex-col gap-3">
+                  <p className="text-sm font-medium text-[#5A6B70] uppercase tracking-widest">
+                    {language === "sr" ? "Jezik" : "Language"}
+                  </p>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => setLanguage("sr")}
+                      className={cn(
+                        "flex-1 py-3 rounded-xl text-sm font-medium transition-all",
+                        language === "sr" ? "bg-[#1B4B5A] text-white shadow-lg shadow-[#1B4B5A]/20" : "bg-[#F7F4EE] text-[#5A6B70]"
+                      )}
+                    >
+                      SRPSKI
+                    </button>
+                    <button
+                      onClick={() => setLanguage("en")}
+                      className={cn(
+                        "flex-1 py-3 rounded-xl text-sm font-medium transition-all",
+                        language === "en" ? "bg-[#1B4B5A] text-white shadow-lg shadow-[#1B4B5A]/20" : "bg-[#F7F4EE] text-[#5A6B70]"
+                      )}
+                    >
+                      ENGLISH
+                    </button>
+                  </div>
+                </div>
+
+                <Link
+                  href="/booking"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    handleLinkClick()
+                  }}
+                >
+                  <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-xl py-6 text-lg font-medium shadow-xl shadow-[#1B4B5A]/20">
+                    {t("bookNow")}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Menu Footer */}
+          <div className="p-8 border-t border-[#F7F4EE] text-center">
+            <p className="text-[#5A6B70] text-xs uppercase tracking-[0.2em]">
+              Maestrale Luxury Experience
+            </p>
           </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }

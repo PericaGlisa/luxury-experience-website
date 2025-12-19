@@ -27,7 +27,7 @@ export function WhatsAppWidget() {
       {/* Chat Window */}
       <div
         className={cn(
-          "mb-4 w-[calc(100vw-2rem)] sm:w-[320px] bg-white rounded-2xl shadow-2xl border border-[#C9A962]/30 overflow-hidden transition-all duration-300 transform origin-bottom-right pointer-events-auto",
+          "mb-4 w-[calc(100vw-2rem)] sm:w-[350px] md:w-[380px] bg-white rounded-2xl shadow-2xl border border-[#C9A962]/30 overflow-hidden transition-all duration-300 transform origin-bottom-right pointer-events-auto",
           isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-10 pointer-events-none"
         )}
       >
