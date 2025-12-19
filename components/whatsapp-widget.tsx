@@ -40,7 +40,7 @@ export function WhatsAppWidget() {
                   src="/logo.png"
                   alt="Maestrale Logo"
                   fill
-                  className="object-contain scale-150 translate-y-[3px]"
+                  className="object-contain scale-150 translate-y-[5px]"
                   priority
                 />
               </div>
