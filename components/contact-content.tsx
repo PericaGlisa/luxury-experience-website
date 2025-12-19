@@ -173,7 +173,9 @@ export function ContactContent() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-[#E8E0D0] bg-[#FFFEF9] focus:outline-none focus:border-[#1B4B5A] transition-colors"
+                    className={`w-full px-4 py-3 rounded-xl border border-[#E8E0D0] bg-[#FFFEF9] focus:outline-none focus:border-[#1B4B5A] transition-colors appearance-none cursor-pointer ${
+                      !formData.subject ? "text-[#8A9499]" : "text-[#1B4B5A]"
+                    }`}
                   >
                     <option value="">{language === "sr" ? "Izaberite temu" : "Select a subject"}</option>
                     <option value="experiences">{language === "sr" ? "Iskustva" : "Experiences"}</option>
@@ -190,7 +192,7 @@ export function ContactContent() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-[#E8E0D0] bg-[#FFFEF9] focus:outline-none focus:border-[#1B4B5A] transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-[#E8E0D0] bg-[#FFFEF9] focus:outline-none focus:border-[#1B4B5A] transition-colors resize-none text-[#1B4B5A] placeholder:text-[#8A9499]"
                   placeholder={language === "sr" ? "Kako vam možemo pomoći?" : "How can we help you?"}
                 />
               </div>

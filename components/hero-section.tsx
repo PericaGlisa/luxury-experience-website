@@ -253,7 +253,9 @@ export function HeroSection() {
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full bg-transparent text-sm text-[#1B4B5A] focus:outline-none"
+                    className={`w-full bg-transparent text-sm focus:outline-none ${
+                      !formData.date ? "text-[#8A9499]" : "text-[#1B4B5A]"
+                    }`}
                   />
                 </div>
               </div>
@@ -265,7 +267,9 @@ export function HeroSection() {
                   name="time"
                   value={formData.time}
                   onChange={handleChange}
-                  className="flex-1 bg-transparent text-sm text-[#1B4B5A] focus:outline-none appearance-none cursor-pointer"
+                  className={`flex-1 bg-transparent text-sm focus:outline-none appearance-none cursor-pointer ${
+                    !formData.time ? "text-[#8A9499]" : "text-[#1B4B5A]"
+                  }`}
                 >
                   {timeOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -282,7 +286,9 @@ export function HeroSection() {
                   name="destination"
                   value={formData.destination}
                   onChange={handleChange}
-                  className="flex-1 bg-transparent text-sm text-[#1B4B5A] focus:outline-none appearance-none cursor-pointer"
+                  className={`flex-1 bg-transparent text-sm focus:outline-none appearance-none cursor-pointer ${
+                    !formData.destination ? "text-[#8A9499]" : "text-[#1B4B5A]"
+                  }`}
                 >
                   {destinations.map((dest) => (
                     <option key={dest.value} value={dest.value}>
