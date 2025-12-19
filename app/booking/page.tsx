@@ -20,6 +20,12 @@ export default function BookingPage() {
         hideEventTypeDetails: false,
         layout: "month_view",
       })
+
+      cal("inline", {
+        elementOrSelector: "#cal-booking-embed",
+        calLink: "maestralelux/15min",
+        config: { layout: "month_view", theme: "light" },
+      })
     })()
   }, [])
 
@@ -44,11 +50,9 @@ export default function BookingPage() {
           </div>
 
           <div className="bg-white rounded-3xl p-4 md:p-8 shadow-sm overflow-hidden min-h-[600px]">
-            <Cal
-              namespace="15min"
-              calLink="maestralelux/15min"
-              style={{ width: "100%", height: "100%", minHeight: "600px", border: "none" }}
-              config={{ layout: "month_view", theme: "light" }}
+            <div 
+              id="cal-booking-embed" 
+              style={{ width: "100%", height: "100%", minHeight: "600px" }}
             />
           </div>
         </div>
