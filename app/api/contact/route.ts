@@ -15,15 +15,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const emailSubject = `New contact form message: ${subject}`
+    const emailSubject = `Nova poruka sa kontakt forme: ${subject}`
 
     const html = `
-      <h2>New contact form message</h2>
-      <p><strong>Name:</strong> ${name}</p>
+      <h2>Nova poruka sa kontakt stranice</h2>
+      <p><strong>Ime:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-      <p><strong>Subject:</strong> ${subject}</p>
-      <p><strong>Message:</strong></p>
+      <p><strong>Telefon:</strong> ${phone || "Nije navedeno"}</p>
+      <p><strong>Naslov:</strong> ${subject}</p>
+      <p><strong>Poruka:</strong></p>
       <p>${message}</p>
     `
 

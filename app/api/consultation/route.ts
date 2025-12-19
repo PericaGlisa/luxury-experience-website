@@ -15,17 +15,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const subject = "New consultation request from maestralelux.com"
+    const subject = "Novi upit za konsultacije - maestralelux.com"
 
     const html = `
-      <h2>New consultation request from homepage</h2>
-      <p><strong>Name:</strong> ${name}</p>
+      <h2>Novi zahtev za konsultacije sa početne strane</h2>
+      <p><strong>Ime:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-      <p><strong>Preferred date:</strong> ${date || "Not specified"}</p>
-      <p><strong>Destination:</strong> ${destination || "Not selected"}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message || "No additional message"}</p>
+      <p><strong>Telefon:</strong> ${phone || "Nije navedeno"}</p>
+      <p><strong>Željeni datum:</strong> ${date || "Nije precizirano"}</p>
+      <p><strong>Destinacija:</strong> ${destination || "Nije odabrano"}</p>
+      <p><strong>Poruka:</strong></p>
+      <p>${message || "Nema dodatne poruke"}</p>
     `
 
     await resend.emails.send({

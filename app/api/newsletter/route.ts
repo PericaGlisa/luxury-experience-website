@@ -15,11 +15,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing email" }, { status: 400 })
     }
 
-    const subject = "New newsletter subscription from maestralelux.com"
+    const subject = "Nova prijava na newsletter - maestralelux.com"
 
     const html = `
-      <h2>New newsletter subscription</h2>
-      <p><strong>Email:</strong> ${email}</p>
+      <h2>Nova prijava na newsletter listu</h2>
+      <p><strong>Email adresa:</strong> ${email}</p>
     `
 
     await resend.emails.send({
