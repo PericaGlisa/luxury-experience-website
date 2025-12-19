@@ -34,12 +34,12 @@ export function WhatsAppWidget() {
         {/* Header */}
         <div className="bg-[#C9A962] p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 border border-white/20 overflow-hidden">
+            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center p-1.5 border border-white/20 overflow-hidden shadow-sm">
               <Image
                 src="/logo.png"
                 alt="Maestrale Logo"
-                width={40}
-                height={20}
+                width={56}
+                height={28}
                 className="object-contain"
               />
             </div>
@@ -48,8 +48,8 @@ export function WhatsAppWidget() {
                 {language === "sr" ? "Maestrale podrška" : "Maestrale Support"}
               </p>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                <span className="text-white/90 text-xs">
+                <span className="w-2 h-2 bg-[#1B4B5A] rounded-full animate-pulse" />
+                <span className="text-white/90 text-[11px] font-medium uppercase tracking-wider">
                   {language === "sr" ? "Na mreži" : "Online"}
                 </span>
               </div>
@@ -73,12 +73,12 @@ export function WhatsAppWidget() {
             </p>
           </div>
           
-          <div className="relative">
+          <div className="space-y-3">
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder={language === "sr" ? "Vaša poruka..." : "Your message..."}
-              className="w-full bg-white border border-[#C9A962]/20 rounded-xl p-3 text-sm text-[#1B4B5A] placeholder:text-[#5A6B70]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A962]/30 min-h-[100px] resize-none"
+              className="w-full bg-white border border-[#C9A962]/20 rounded-xl p-4 text-sm text-[#1B4B5A] placeholder:text-[#5A6B70]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A962]/30 min-h-[120px] resize-none shadow-inner transition-all"
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault()
@@ -89,9 +89,10 @@ export function WhatsAppWidget() {
             <Button
               onClick={handleSend}
               disabled={!message.trim()}
-              className="absolute bottom-2 right-2 bg-[#C9A962] hover:bg-[#C9A962]/90 text-white w-10 h-10 rounded-xl p-0 flex items-center justify-center shadow-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100"
+              className="w-full bg-[#C9A962] hover:bg-[#C9A962]/90 text-white h-12 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#C9A962]/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:scale-100 font-medium"
             >
-              <Send className="w-5 h-5" />
+              <span>{language === "sr" ? "Pošaljite poruku" : "Send Message"}</span>
+              <Send className="w-4 h-4" />
             </Button>
           </div>
         </div>
@@ -117,8 +118,8 @@ export function WhatsAppWidget() {
         ) : (
           <>
             <MessageCircle className="w-7 h-7" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full border-2 border-[#C9A962]">
-              <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-75" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#1B4B5A] rounded-full border-2 border-white">
+              <span className="absolute inset-0 rounded-full bg-[#1B4B5A] animate-ping opacity-75" />
             </span>
           </>
         )}
