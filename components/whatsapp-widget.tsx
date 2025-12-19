@@ -34,14 +34,14 @@ export function WhatsAppWidget() {
         {/* Header */}
         <div className="bg-[#C9A962] p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center border border-white/20 overflow-hidden shadow-sm relative">
-              <div className="relative w-full h-full flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-white border border-white/20 overflow-hidden shadow-sm relative flex items-center justify-center">
+              <div className="relative w-[85%] h-[85%]">
                 <Image
                   src="/logo.png"
                   alt="Maestrale Logo"
-                  width={64}
-                  height={32}
-                  className="object-contain scale-125 translate-y-[1px]"
+                  fill
+                  className="object-contain object-center"
+                  priority
                 />
               </div>
             </div>
