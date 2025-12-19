@@ -11,7 +11,7 @@ export default function BookingPage() {
 
   useEffect(() => {
     ;(async function () {
-      const cal = await getCalApi({ namespace: "15min" })
+      const cal = await getCalApi({ namespace: "15min", origin: "https://app.cal.eu" })
       cal("ui", {
         cssVarsPerTheme: {
           light: { "cal-brand": "#1B4B5A" },
@@ -48,7 +48,7 @@ export default function BookingPage() {
               namespace="15min"
               calLink="maestralelux/15min"
               style={{ width: "100%", height: "100%", minHeight: "600px", border: "none" }}
-              config={{ layout: "month_view" }}
+              config={{ layout: "month_view", theme: "light" }}
             />
           </div>
         </div>
