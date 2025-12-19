@@ -80,7 +80,7 @@ export default function BookingPage() {
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#C9A962]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-[#1B4B5A]/5 blur-[100px] rounded-full translate-y-1/3 -translate-x-1/4 pointer-events-none" />
       
-      <section className="relative pt-32 md:pt-44 pb-20 px-5 md:px-10 lg:px-20 z-10">
+      <section className="relative pt-36 md:pt-48 pb-20 px-5 md:px-10 lg:px-20 z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header Section with Premium Accents */}
           <div className="text-center mb-16 relative">
