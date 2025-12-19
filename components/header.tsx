@@ -14,6 +14,7 @@ const navItems = {
     { label: "Destinations", href: "/destinations" },
     { label: "Yachts", href: "/yachts" },
     { label: "Journal", href: "/journal" },
+    { label: "Booking", href: "/booking" },
     { label: "Contact", href: "/contact" },
   ],
   sr: [
@@ -22,6 +23,7 @@ const navItems = {
     { label: "Destinacije", href: "/destinations" },
     { label: "Jahte", href: "/yachts" },
     { label: "Žurnal", href: "/journal" },
+    { label: "Zakazivanje", href: "/booking" },
     { label: "Kontakt", href: "/contact" },
   ],
 }
@@ -99,7 +101,7 @@ export function Header() {
               </div>
             )}
           </div>
-          <Link href="/contact" onClick={handleLinkClick}>
+          <Link href="/booking" onClick={handleLinkClick}>
             <Button className="hidden md:flex bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-6 py-2 text-sm font-medium tracking-wide">
               {t("bookNow")}
             </Button>
@@ -147,7 +149,7 @@ export function Header() {
               </button>
             </div>
             <Link
-              href="/contact"
+              href="/booking"
               onClick={() => {
                 setMobileMenuOpen(false)
                 handleLinkClick()

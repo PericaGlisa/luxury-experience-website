@@ -17,6 +17,7 @@ export function Footer() {
     { label: t("destinations"), href: "/destinations" },
     { label: t("yachtCharters"), href: "/yachts" },
     { label: t("journal"), href: "/journal" },
+    { label: t("booking"), href: "/booking" },
     { label: t("contact"), href: "/contact" },
   ]
 
