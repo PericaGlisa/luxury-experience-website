@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { LanguageProvider } from "@/lib/language-context"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { WhatsAppWidget } from "@/components/whatsapp-widget"
 import "./globals.css"
 
 const cormorant = Cormorant_Garamond({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <LanguageProvider>
           <ScrollToTop />
           {children}
+          <WhatsAppWidget />
         </LanguageProvider>
         <Analytics />
       </body>
