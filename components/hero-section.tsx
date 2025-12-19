@@ -18,6 +18,7 @@ export function HeroSection() {
     email: "",
     phone: "",
     date: "",
+    time: "",
     destination: "",
     message: "",
   })
@@ -40,6 +41,7 @@ export function HeroSection() {
           email: "",
           phone: "",
           date: "",
+          time: "",
           destination: "",
           message: "",
         })
@@ -66,6 +68,13 @@ export function HeroSection() {
     { value: "experiences", label: language === "sr" ? "Iskustva" : "Experiences" },
     { value: "destinations", label: language === "sr" ? "Destinacije" : "Destinations" },
     { value: "yacht-charters", label: language === "sr" ? "Čarter jahte" : "Yacht Charters" },
+  ]
+
+  const timeOptions = [
+    { value: "", label: language === "sr" ? "Okvirno vreme" : "Preferred time" },
+    { value: "morning", label: language === "sr" ? "Prepodne" : "Morning" },
+    { value: "afternoon", label: language === "sr" ? "Popodne" : "Afternoon" },
+    { value: "evening", label: language === "sr" ? "Veče" : "Evening" },
   ]
 
   const heroSlides = [
@@ -249,8 +258,25 @@ export function HeroSection() {
                 </div>
               </div>
 
+              {/* Preferred Time */}
+              <div className="flex items-center gap-3 px-4 py-4 border border-[#E8E0D0] rounded-xl bg-[#FFFEF9] focus-within:border-[#1B4B5A] transition-colors">
+                <Clock className="w-5 h-5 text-[#5A6B70] shrink-0" />
+                <select
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  className="flex-1 bg-transparent text-sm text-[#1B4B5A] focus:outline-none appearance-none cursor-pointer"
+                >
+                  {timeOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               {/* Destination */}
-              <div className="flex items-center gap-3 px-4 py-4 border border-[#E8E0D0] rounded-xl bg-[#FFFEF9] focus-within:border-[#1B4B5A] transition-colors lg:col-span-2">
+              <div className="flex items-center gap-3 px-4 py-4 border border-[#E8E0D0] rounded-xl bg-[#FFFEF9] focus-within:border-[#1B4B5A] transition-colors">
                 <MessageSquare className="w-5 h-5 text-[#5A6B70] shrink-0" />
                 <select
                   name="destination"

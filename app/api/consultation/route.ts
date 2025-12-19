@@ -38,6 +38,7 @@ export async function POST(request: Request) {
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Telefon:</strong> ${phone || "Nije navedeno"}</p>
       <p><strong>Željeni datum:</strong> ${formattedDate || "Nije precizirano"}</p>
+      <p><strong>Okvirno vreme:</strong> ${timeLabel}</p>
       <p><strong>Zanima me:</strong> ${destinationLabel}</p>
       <p><strong>Poruka:</strong></p>
       <p>${message || "Nema dodatne poruke"}</p>
