@@ -147,9 +147,9 @@ export function Header() {
               <Image
                 src="/logo.png"
                 alt="Maestrale Logo"
-                width={160}
-                height={80}
-                className="h-16 w-auto"
+                width={240}
+                height={120}
+                className="h-24 w-auto"
                 priority
               />
             </Link>
