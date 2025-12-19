@@ -15,15 +15,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const subject = "Novi upit za konsultacije - maestralelux.com"
+    // Format date to Serbian standard (DD.MM.YYYY)
+    let formattedDate = date
+    if (date) {
+      const [year, month, day] = date.split("-")
+      formattedDate = `${day}.${month}.${year}.`
+    }
+
+    // Map destination values to Serbian labels
+    const destinationLabels: Record<string, string> = {
+      experiences: "Iskustva",
+      destinations: "Destinacije",
+      "yacht-charters": "Čarter jahte",
+    }
+    const destinationLabel = destinationLabels[destination] || "Nije odabrano"
+
+    const subject = `Novi upit za konsultacije (${destinationLabel}) - maestralelux.com`
 
     const html = `
       <h2>Novi zahtev za konsultacije sa početne strane</h2>
       <p><strong>Ime:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Telefon:</strong> ${phone || "Nije navedeno"}</p>
-      <p><strong>Željeni datum:</strong> ${date || "Nije precizirano"}</p>
-      <p><strong>Destinacija:</strong> ${destination || "Nije odabrano"}</p>
+      <p><strong>Željeni datum:</strong> ${formattedDate || "Nije precizirano"}</p>
+      <p><strong>Zanima me:</strong> ${destinationLabel}</p>
       <p><strong>Poruka:</strong></p>
       <p>${message || "Nema dodatne poruke"}</p>
     `
