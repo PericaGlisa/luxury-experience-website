@@ -21,11 +21,37 @@ export function HeroSection() {
     destination: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Consultation request:", formData)
-    // Handle form submission
+    try {
+      const response = await fetch("/api/consultation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          destination: "",
+          message: "",
+        })
+        setStatus("success")
+      } else {
+        setStatus("error")
+        console.error("Consultation request failed")
+      }
+    } catch (error) {
+      setStatus("error")
+      console.error("Consultation request error", error)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -268,6 +294,20 @@ export function HeroSection() {
                 <Send className="w-4 h-4" />
               </Button>
             </div>
+            {status === "success" && (
+              <p className="mt-2 text-xs text-[#1B4B5A] text-center">
+                {language === "sr"
+                  ? "Uspešno poslato. Javićemo vam se uskoro."
+                  : "Sent successfully. We will contact you soon."}
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-2 text-xs text-[#B00020] text-center">
+                {language === "sr"
+                  ? "Došlo je do greške. Pokušajte ponovo."
+                  : "Something went wrong. Please try again."}
+              </p>
+            )}
           </form>
         </div>
       </div>

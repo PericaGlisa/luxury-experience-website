@@ -109,11 +109,15 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#C9A962]" />
-                <span className="text-sm text-[#FFFEF9]/70">+381 65 319 87 28</span>
+                <a href="tel:+381653198728" className="text-sm text-[#FFFEF9]/70">
+                  +381 65 319 87 28
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#C9A962]" />
-                <span className="text-sm text-[#FFFEF9]/70">hello@maestrale.com</span>
+                <a href="mailto:info@maestralelux.com" className="text-sm text-[#FFFEF9]/70">
+                  info@maestralelux.com
+                </a>
               </li>
             </ul>
           </div>

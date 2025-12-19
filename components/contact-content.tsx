@@ -16,10 +16,36 @@ export function ContactContent() {
     subject: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        })
+        setStatus("success")
+      } else {
+        setStatus("error")
+        console.error("Contact form submission failed")
+      }
+    } catch (error) {
+      setStatus("error")
+      console.error("Contact form submission error", error)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -36,11 +62,13 @@ export function ContactContent() {
       icon: Phone,
       title: language === "sr" ? "Telefon" : "Phone",
       content: "+381 65 319 87 28",
+      href: "tel:+381653198728",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "hello@maestrale.com",
+      content: "info@maestralelux.com",
+      href: "mailto:info@maestralelux.com",
     },
     {
       icon: Clock,
@@ -74,14 +102,20 @@ export function ContactContent() {
               const Icon = info.icon
               return (
                 <div key={info.title} className="flex items-start gap-4 p-5 bg-white rounded-2xl">
-                  <div className="w-12 h-12 rounded-xl bg-[#1B4B5A] flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-[#1B4B5A] mb-1">{info.title}</h4>
-                    <p className="text-sm text-[#5A6B70]">{info.content}</p>
-                  </div>
-                </div>
+              <div className="w-12 h-12 rounded-xl bg-[#1B4B5A] flex items-center justify-center shrink-0">
+                <Icon className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h4 className="font-medium text-[#1B4B5A] mb-1">{info.title}</h4>
+                {info.href ? (
+                  <a href={info.href} className="text-sm text-[#5A6B70]">
+                    {info.content}
+                  </a>
+                ) : (
+                  <p className="text-sm text-[#5A6B70]">{info.content}</p>
+                )}
+              </div>
+            </div>
               )
             })}
           </div>
@@ -167,6 +201,20 @@ export function ContactContent() {
                 {language === "sr" ? "Pošalji poruku" : "Send Message"}
                 <Send className="w-4 h-4" />
               </Button>
+              {status === "success" && (
+                <p className="mt-2 text-xs text-[#1B4B5A] text-center">
+                  {language === "sr"
+                    ? "Uspešno poslato. Javićemo vam se uskoro."
+                    : "Sent successfully. We will contact you soon."}
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-2 text-xs text-[#B00020] text-center">
+                  {language === "sr"
+                    ? "Došlo je do greške. Pokušajte ponovo."
+                    : "Something went wrong. Please try again."}
+                </p>
+              )}
             </form>
           </div>
         </div>

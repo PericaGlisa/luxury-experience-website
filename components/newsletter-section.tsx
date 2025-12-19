@@ -9,11 +9,30 @@ import { useLanguage } from "@/lib/language-context"
 export function NewsletterSection() {
   const { t, language } = useLanguage()
   const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Subscribing:", email)
-    setEmail("")
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      if (response.ok) {
+        setEmail("")
+        setStatus("success")
+      } else {
+        setStatus("error")
+        console.error("Newsletter subscription failed")
+      }
+    } catch (error) {
+      setStatus("error")
+      console.error("Newsletter subscription error", error)
+    }
   }
 
   return (
@@ -56,6 +75,20 @@ export function NewsletterSection() {
             <ArrowRight className="w-5 h-5" />
           </Button>
         </form>
+        {status === "success" && (
+          <p className="mt-2 text-xs text-[#1B4B5A] text-center">
+            {language === "sr"
+              ? "Uspešno ste se prijavili na newsletter."
+              : "You have successfully subscribed to the newsletter."}
+          </p>
+        )}
+        {status === "error" && (
+          <p className="mt-2 text-xs text-[#B00020] text-center">
+            {language === "sr"
+              ? "Došlo je do greške pri prijavi. Pokušajte ponovo."
+              : "Subscription failed. Please try again."}
+          </p>
+        )}
 
         <p className="text-xs text-[#5A6B70]/70 mt-6">
           {language === "sr"

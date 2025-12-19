@@ -57,9 +57,17 @@ export function PrivacyContent() {
                 {language === "sr" ? "Kontaktirajte nas" : "Contact Us"}
               </h2>
               <p className="leading-relaxed">
-                {language === "sr"
-                  ? "Za sva pitanja u vezi sa ovom politikom privatnosti, kontaktirajte nas na privacy@maestrale.com."
-                  : "For any questions regarding this privacy policy, contact us at privacy@maestrale.com."}
+                {language === "sr" ? (
+                  <>
+                    Za sva pitanja u vezi sa ovom politikom privatnosti, kontaktirajte nas na{" "}
+                    <a href="mailto:info@maestralelux.com">info@maestralelux.com</a>.
+                  </>
+                ) : (
+                  <>
+                    For any questions regarding this privacy policy, contact us at{" "}
+                    <a href="mailto:info@maestralelux.com">info@maestralelux.com</a>.
+                  </>
+                )}
               </p>
             </div>
           </div>
