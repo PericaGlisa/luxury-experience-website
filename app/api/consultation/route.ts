@@ -9,7 +9,7 @@ const toEmail = process.env.CONTACT_RECIPIENT_EMAIL || "info@maestralelux.com"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, date, destination, message } = body
+    const { name, email, phone, date, time, destination, message } = body
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
@@ -21,6 +21,14 @@ export async function POST(request: Request) {
       const [year, month, day] = date.split("-")
       formattedDate = `${day}.${month}.${year}.`
     }
+
+    // Map time values to Serbian labels
+    const timeLabels: Record<string, string> = {
+      morning: "Prepodne",
+      afternoon: "Popodne",
+      evening: "Veče",
+    }
+    const timeLabel = timeLabels[time] || "Nije precizirano"
 
     // Map destination values to Serbian labels
     const destinationLabels: Record<string, string> = {
@@ -57,4 +65,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
-
