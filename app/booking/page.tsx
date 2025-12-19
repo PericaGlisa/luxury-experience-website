@@ -161,7 +161,7 @@ export default function BookingPage() {
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-[#F7F4EE]">
                 <Sparkles className="w-6 h-6 text-[#1B4B5A]" />
               </div>
-              <h3 className="font-serif text-[#1B4B5A] text-xl font-medium mb-2">{language === "sr" ? "Premium Podrška" : "Premium Support"}</h3>
+              <h3 className="font-serif text-[#1B4B5A] text-xl font-medium mb-2">{language === "sr" ? "Premium podrška" : "Premium support"}</h3>
               <p className="text-[#5A6B70] text-sm leading-relaxed">{language === "sr" ? "Direktan pristup našem timu" : "Direct access to our expert team"}</p>
             </div>
           </div>
