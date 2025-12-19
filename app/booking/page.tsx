@@ -84,20 +84,15 @@ export default function BookingPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header Section with Premium Accents */}
           <div className="text-center mb-16 relative">
-            <div className="flex justify-center mb-6">
-              <div className="bg-[#1B4B5A]/10 rounded-full px-4 py-2 flex items-center gap-2 shadow-sm">
-                <Sparkles className="w-4 h-4 text-[#C9A962]" />
-                <span className="text-sm font-medium text-[#1B4B5A]">
-                  {language === "sr" ? "Ekskluzivni Termini" : "Exclusive Availability"}
-                </span>
-              </div>
-            </div>
+            <p className="text-[#C9A962] text-sm font-medium tracking-widest uppercase mb-4">
+              {language === "sr" ? "Ekskluzivni termini" : "Exclusive availability"}
+            </p>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-[#1B4B5A] mb-6 leading-tight tracking-tight text-balance">
               {language === "sr" ? (
-                <>Zakažite <span className="italic">Vaš</span> Trenutak</>
+                <>Zakažite <span className="italic">vaš</span> trenutak</>
               ) : (
-                <>Book <span className="italic">Your</span> Moment</>
+                <>Book <span className="italic">your</span> moment</>
               )}
             </h1>
             
@@ -109,13 +104,13 @@ export default function BookingPage() {
 
             {/* Quick Benefits/Trust Badges */}
             <div className="flex flex-wrap justify-center gap-6 mt-10">
-              <div className="flex items-center gap-2 text-[#8A9499]">
-                <Clock className="w-4 h-4" />
-                <span className="text-sm font-light italic">{language === "sr" ? "15-min razgovor" : "15-min session"}</span>
+              <div className="flex items-center gap-2 text-[#5A6B70]">
+                <Clock className="w-4 h-4 text-[#C9A962]" />
+                <span className="text-sm font-medium">{language === "sr" ? "15-min razgovor" : "15-min session"}</span>
               </div>
-              <div className="flex items-center gap-2 text-[#8A9499]">
-                <ShieldCheck className="w-4 h-4" />
-                <span className="text-sm font-light italic">{language === "sr" ? "Privatne konsultacije" : "Private consultation"}</span>
+              <div className="flex items-center gap-2 text-[#5A6B70]">
+                <ShieldCheck className="w-4 h-4 text-[#C9A962]" />
+                <span className="text-sm font-medium">{language === "sr" ? "Privatne konsultacije" : "Private consultation"}</span>
               </div>
             </div>
           </div>
