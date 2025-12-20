@@ -70,7 +70,7 @@ export function TopRatedHotels() {
               variant="outline"
               className="rounded-full border-[#D4C9B8] text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white px-6 bg-transparent"
             >
-              <Link href={getUrl("/destinations")}>
+              <Link href={getUrl("/experiences")}>
                 {t("exploreMore")}
               </Link>
             </Button>
@@ -79,7 +79,7 @@ export function TopRatedHotels() {
               size="icon"
               className="w-10 h-10 rounded-full bg-[#1B4B5A] flex items-center justify-center text-white hover:bg-[#0D3D4A] transition-colors"
             >
-              <Link href={getUrl("/destinations")}>
+              <Link href={getUrl("/experiences")}>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </Button>
