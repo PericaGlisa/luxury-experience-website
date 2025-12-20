@@ -5,7 +5,7 @@ import { YachtsContent } from "@/components/yachts-content"
 
 export default function YachtsPage() {
   return (
-    <main className="min-h-screen bg-[#F7F4EE]">
+    <main className="min-h-screen">
       <Header />
       <YachtsContent />
       <NewsletterSection />

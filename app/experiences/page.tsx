@@ -5,7 +5,7 @@ import { ExperiencesContent } from "@/components/experiences-content"
 
 export default function ExperiencesPage() {
   return (
-    <main className="min-h-screen bg-[#F7F4EE]">
+    <main className="min-h-screen">
       <Header />
       <ExperiencesContent />
       <NewsletterSection />

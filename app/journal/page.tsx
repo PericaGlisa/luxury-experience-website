@@ -6,7 +6,7 @@ import { JournalContent } from "@/components/journal-content"
 
 export default function JournalPage() {
   return (
-    <main className="min-h-screen bg-[#F7F4EE]">
+    <main className="min-h-screen">
       <Header />
       <Suspense fallback={<div className="py-10 text-center text-[#5A6B70]">Loading journal...</div>}>
         <JournalContent />

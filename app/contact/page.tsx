@@ -4,7 +4,7 @@ import { ContactContent } from "@/components/contact-content"
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#F7F4EE]">
+    <main className="min-h-screen">
       <Header />
       <ContactContent />
       <Footer />

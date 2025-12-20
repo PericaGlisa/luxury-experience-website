@@ -73,7 +73,7 @@ export default function BookingPage() {
   }, [language])
 
   return (
-    <main className="min-h-screen bg-[#F7F4EE] relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden">
       <Header />
       
       {/* Decorative Background Elements */}
