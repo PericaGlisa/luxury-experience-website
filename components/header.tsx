@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Globe, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
@@ -34,6 +35,8 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const { language, setLanguage, t, getUrl } = useLanguage()
+  const pathname = usePathname()
+  const isHomePage = pathname === `/${language}` || pathname === `/${language}/`
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -56,7 +59,10 @@ export function Header() {
   }
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-5 md:px-10 lg:px-20 py-5">
+    <header className={cn(
+      "top-0 left-0 right-0 z-50 px-5 md:px-10 lg:px-20 py-5 transition-all duration-300",
+      isHomePage ? "absolute" : "relative bg-white shadow-sm mb-8"
+    )}>
       <nav className="relative flex items-center justify-between">
         <Link href={getUrl("/")} className="flex items-center" onClick={handleLinkClick}>
           <Image
