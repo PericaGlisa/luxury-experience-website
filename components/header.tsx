@@ -187,7 +187,7 @@ export function Header() {
                     <button
                       onClick={() => setLanguage("sr")}
                       className={cn(
-                        "flex-1 py-3 rounded-xl text-sm font-medium transition-all",
+                        "flex-1 py-3 rounded-full text-sm font-medium transition-all",
                         language === "sr" ? "bg-[#1B4B5A] text-white shadow-lg shadow-[#1B4B5A]/20" : "bg-[#F7F4EE] text-[#5A6B70]"
                       )}
                     >
@@ -196,7 +196,7 @@ export function Header() {
                     <button
                       onClick={() => setLanguage("en")}
                       className={cn(
-                        "flex-1 py-3 rounded-xl text-sm font-medium transition-all",
+                        "flex-1 py-3 rounded-full text-sm font-medium transition-all",
                         language === "en" ? "bg-[#1B4B5A] text-white shadow-lg shadow-[#1B4B5A]/20" : "bg-[#F7F4EE] text-[#5A6B70]"
                       )}
                     >
@@ -212,7 +212,7 @@ export function Header() {
                     handleLinkClick()
                   }}
                 >
-                  <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-xl py-6 text-lg font-medium shadow-xl shadow-[#1B4B5A]/20">
+                  <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-lg font-medium shadow-xl shadow-[#1B4B5A]/20">
                     {t("bookNow")}
                   </Button>
                 </Link>
