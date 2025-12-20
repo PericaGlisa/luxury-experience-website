@@ -122,9 +122,9 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background: linear-gradient(180deg, #FFFEFB 0%, #F7F4EE 100%);
+    @apply text-foreground min-h-screen;
+    background: radial-gradient(circle at 50% 0%, #fffefc 0%, #f7f4ee 100%);
     background-attachment: fixed;
-    @apply text-foreground;
   }
 }
 

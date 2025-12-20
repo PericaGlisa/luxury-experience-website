@@ -49,7 +49,7 @@ export function TopRatedHotels() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-16 md:py-24 px-5 md:px-10 lg:px-20 bg-[#F7F4EE]">
+    <section className="py-16 md:py-24 px-5 md:px-10 lg:px-20 bg-transparent">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
