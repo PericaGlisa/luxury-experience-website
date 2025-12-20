@@ -15,7 +15,7 @@ export default function NotFound() {
     <main className="min-h-screen bg-[#F7F4EE] flex flex-col">
       <Header />
       
-      <div className="flex-grow flex items-center justify-center py-12 md:py-24 px-5">
+      <div className="flex-grow flex items-center justify-center pt-36 md:pt-48 pb-12 md:pb-24 px-5">
         {/* Content */}
         <div className="max-w-2xl w-full text-center px-6 py-8 md:py-12 mx-auto">
           <div className="mb-8 inline-block">
