@@ -12,6 +12,11 @@ export function JournalSidebar() {
   const getCategorySlug = (name: string) =>
     name
       .toLowerCase()
+      .replace(/č/g, "c")
+      .replace(/ć/g, "c")
+      .replace(/š/g, "s")
+      .replace(/ž/g, "z")
+      .replace(/đ/g, "dj")
       .replace(/&/g, "and")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "")
