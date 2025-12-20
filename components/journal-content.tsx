@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock } from "lucide-react"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, notFound } from "next/navigation"
 import { useLanguage } from "@/lib/language-context"
 
 export const journalArticles = [
@@ -156,6 +156,10 @@ export function JournalContent() {
         getCategorySlug(article.category.en) === categorySlug ||
         getCategorySlug(article.category.sr) === categorySlug,
     )?.category[language as "en" | "sr"]
+
+  if (categorySlug && !currentCategoryLabel) {
+    notFound()
+  }
 
   return (
     <section className="pt-36 md:pt-48 pb-16 px-5 md:px-10 lg:px-20">

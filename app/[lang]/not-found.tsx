@@ -20,7 +20,7 @@ export default function NotFound() {
         <div className="max-w-2xl w-full text-center px-6 py-8 md:py-12 mx-auto">
           <div className="mb-8 inline-block">
             <div className="bg-[#1B4B5A]/5 rounded-2xl px-6 py-2 border border-[#1B4B5A]/10">
-              <span className="text-sm md:text-base font-medium tracking-[0.2em] uppercase text-[#1B4B5A]">Error</span>
+              <span className="text-sm md:text-base font-medium tracking-[0.2em] uppercase text-[#1B4B5A]">{t("errorLabel")}</span>
             </div>
           </div>
           
