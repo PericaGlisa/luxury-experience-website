@@ -165,7 +165,7 @@ const highlightNames: Record<string, { en: string; sr: string }> = {
 }
 
 export function DestinationDetail({ id }: { id: string }) {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const destination = destinations.find((d) => d.id === id || d.slug.en === id || d.slug.sr === id)
 
   if (!destination) {
@@ -179,7 +179,7 @@ export function DestinationDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href={`/${language}/destinations`}
+          href={getUrl("/destinations")}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -243,7 +243,7 @@ export function DestinationDetail({ id }: { id: string }) {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {destinationHotels.map((hotel) => (
-                    <Link key={hotel.id} href={`/${language}/hotels/${hotel.slug[language as "en" | "sr"]}`}>
+                    <Link key={hotel.id} href={getUrl("/hotels/" + hotel.slug[language as "en" | "sr"])}>
                       <div className="group relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow cursor-pointer">
                         <div className="relative h-40 overflow-hidden">
                           <Image
@@ -295,11 +295,11 @@ export function DestinationDetail({ id }: { id: string }) {
                 </div>
               </div>
 
-              <Link href={`/${language}/contact`} className="block">
-                <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
-                  {language === "sr" ? "Planirajte putovanje" : "Plan Your Trip"}
-                </Button>
-              </Link>
+              <Button asChild className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
+                <Link href={getUrl("/contact")}>
+                  {language === "sr" ? "Isplanirajte putovanje" : "Plan Your Trip"}
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

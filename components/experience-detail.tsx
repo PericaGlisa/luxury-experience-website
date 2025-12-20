@@ -209,7 +209,7 @@ const includesNames: Record<string, { en: string; sr: string }> = {
 }
 
 export function ExperienceDetail({ id }: { id: string }) {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const experience = experiences.find((e) => e.id.toString() === id || e.slug.en === id || e.slug.sr === id)
 
   if (!experience) {
@@ -221,7 +221,7 @@ export function ExperienceDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href={`/${language}/experiences`}
+          href={getUrl("/experiences")}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -257,11 +257,11 @@ export function ExperienceDetail({ id }: { id: string }) {
               {experience.description[language as "en" | "sr"]}
             </p>
             <div className="flex items-center">
-              <Link href="#experience-booking">
-                <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-6 h-auto text-lg">
+              <Button asChild className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-6 h-auto text-lg">
+                <Link href="#experience-booking">
                   {language === "sr" ? "Zatražite rezervaciju" : "Request Booking"}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -334,11 +334,11 @@ export function ExperienceDetail({ id }: { id: string }) {
                   ? "Sve detalje o datumu, broju gostiju i vašim željama dogovaramo kroz kontakt formu, kao deo vašeg ukupnog plana putovanja na Sardiniju. Pošaljite nam upit i naš tim će vam pripremiti personalizovanu ponudu za ovo iskustvo."
                   : "We arrange all details like date, number of guests and your preferences through the contact form, as part of your overall trip plan to Sardinia. Send us an inquiry and our team will prepare a tailored offer for this experience."}
               </p>
-              <Link href={`/${language}/contact`}>
-                <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white font-medium py-6 text-base rounded-full">
-                  {language === "sr" ? "Otvorite kontakt formu" : "Open Contact Form"}
-                </Button>
-              </Link>
+              <Button asChild className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white font-medium py-6 text-base rounded-full">
+                <Link href={getUrl("/contact")}>
+                  {language === "sr" ? "Kontaktirajte nas" : "Contact Us"}
+                </Link>
+              </Button>
             </div>
             <div className="bg-[#F7F4EE] rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">

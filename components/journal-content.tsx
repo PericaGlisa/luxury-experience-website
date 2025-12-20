@@ -95,7 +95,7 @@ export const journalArticles = [
 ]
 
 export function JournalContent() {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const searchParams = useSearchParams()
 
   const query = searchParams.get("q")?.toLowerCase().trim() || ""
@@ -195,7 +195,7 @@ export function JournalContent() {
 
         {!hasFilters && featuredArticle && (
           <div className="mb-12">
-            <Link href={`/${language}/journal/${featuredArticle.slug[language as "en" | "sr"]}`}>
+            <Link href={getUrl(`/journal/${featuredArticle.slug[language as "en" | "sr"]}`)}>
               <div className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer">
                 <Image
                   src={featuredArticle.image || "/placeholder.svg"}
@@ -227,10 +227,13 @@ export function JournalContent() {
         )}
 
         {/* Articles Grid - Added Link wrappers */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {regularArticles.map((article) => (
-            <Link key={article.id} href={`/${language}/journal/${article.slug[language as "en" | "sr"]}`}>
-              <div className="group cursor-pointer">
+            <Link
+              key={article.id}
+              href={getUrl(`/journal/${article.slug[language as "en" | "sr"]}`)}
+              className="group flex flex-col h-full"
+            >
                 <div className="relative h-52 rounded-2xl overflow-hidden mb-4">
                   <Image
                     src={article.image || "/placeholder.svg"}
@@ -252,7 +255,6 @@ export function JournalContent() {
                     {article.readTime} {language === "sr" ? "čitanja" : "read"}
                   </span>
                 </div>
-              </div>
             </Link>
           ))}
         </div>

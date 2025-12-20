@@ -50,7 +50,7 @@ const hotels = [
 ]
 
 export function TopRatedHotels() {
-  const { language, t } = useLanguage()
+  const { language, t, getUrl } = useLanguage()
 
   return (
     <section className="py-16 md:py-24 px-5 md:px-10 lg:px-20 bg-[#F7F4EE]">
@@ -65,28 +65,33 @@ export function TopRatedHotels() {
             <h2 className="font-serif text-3xl md:text-4xl font-medium text-[#1B4B5A]">{t("topRatedHotelsTitle")}</h2>
           </div>
           <div className="flex items-center gap-3">
-            <Link href={`/${language}/destinations`}>
-              <Button
-                variant="outline"
-                className="rounded-full border-[#D4C9B8] text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white px-6 bg-transparent"
-              >
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full border-[#D4C9B8] text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white px-6 bg-transparent"
+            >
+              <Link href={getUrl("/destinations")}>
                 {t("exploreMore")}
-              </Button>
-            </Link>
-            <Link href={`/${language}/destinations`}>
-              <button className="w-10 h-10 rounded-full bg-[#1B4B5A] flex items-center justify-center text-white hover:bg-[#0D3D4A] transition-colors">
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="icon"
+              className="w-10 h-10 rounded-full bg-[#1B4B5A] flex items-center justify-center text-white hover:bg-[#0D3D4A] transition-colors"
+            >
+              <Link href={getUrl("/destinations")}>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
 
-        {/* Hotels Grid - Updated links to hotel detail pages */}
+        {/* Hotels Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {hotels.map((hotel) => (
             <Link
               key={hotel.id}
-              href={`/${language}/hotels/${hotel.slug[language as "en" | "sr"]}`}
+              href={getUrl(`/hotels/${hotel.slug[language as "en" | "sr"]}`)}
               className="block"
             >
               <div className="group relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow cursor-pointer">

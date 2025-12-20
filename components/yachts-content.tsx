@@ -58,7 +58,7 @@ const yachts = [
 ]
 
 export function YachtsContent() {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
 
   return (
     <section className="pt-36 md:pt-48 pb-16 px-5 md:px-10 lg:px-20">
@@ -66,7 +66,7 @@ export function YachtsContent() {
         {/* Hero */}
         <div className="text-center mb-16">
           <p className="text-[#C9A962] text-sm font-medium tracking-widest uppercase mb-4">
-            {language === "sr" ? "Čarter jahti" : "Yacht Charter"}
+            {language === "sr" ? "Ekskluzivna čarter flota" : "Exclusive Charter Fleet"}
           </p>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-[#1B4B5A] mb-6">
             {language === "sr" ? "Privatne jahte za vaše putovanje" : "Private Yachts for Your Journey"}
@@ -78,10 +78,10 @@ export function YachtsContent() {
           </p>
         </div>
 
-        {/* Yachts Grid - Added links to detail pages */}
+        {/* Yachts Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
           {yachts.map((yacht) => (
-            <Link key={yacht.id} href={`/${language}/yachts/${yacht.slug[language as "en" | "sr"]}`}>
+            <Link key={yacht.id} href={getUrl(`/yachts/${yacht.slug[language as "en" | "sr"]}`)}>
               <div className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row cursor-pointer">
                 <div className="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
                   <Image
@@ -124,10 +124,10 @@ export function YachtsContent() {
                     </div>
                   </div>
                   <div className="flex items-center justify-end">
-                    <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-5">
+                    <div className="bg-[#1B4B5A] text-white rounded-full px-5 py-2.5 text-sm flex items-center gap-1">
                       {language === "sr" ? "Detalji" : "Details"}
-                      <ArrowUpRight className="w-4 h-4 ml-1" />
-                    </Button>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
                   </div>
                 </div>
               </div>

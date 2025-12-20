@@ -233,7 +233,7 @@ const categories = [
 import { JournalSidebar } from "@/components/journal-sidebar"
 
 export function ArticleDetail({ id }: { id: string }) {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const article = articles.find((a) => a.id === id || a.slug.en === id || a.slug.sr === id)
 
   if (!article) {
@@ -245,7 +245,7 @@ export function ArticleDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href={`/${language}/journal`}
+          href={getUrl("/journal")}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />

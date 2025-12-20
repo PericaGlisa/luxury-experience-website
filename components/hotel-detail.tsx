@@ -130,7 +130,7 @@ const amenityNames: Record<string, { en: string; sr: string }> = {
 }
 
 export function HotelDetail({ id }: { id: string }) {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const hotel = hotels.find((h) => h.id === id || h.slug.en === id || h.slug.sr === id)
 
   if (!hotel) {
@@ -142,7 +142,7 @@ export function HotelDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href={`/${language}/destinations`}
+          href={getUrl("/destinations")}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -235,11 +235,11 @@ export function HotelDetail({ id }: { id: string }) {
                 </p>
               </div>
 
-              <Link href={`/${language}/contact`} className="block">
-                <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
-                  {language === "sr" ? "Planirajte putovanje" : "Plan Your Trip"}
-                </Button>
-              </Link>
+              <Button asChild className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
+                <Link href={getUrl("/contact")}>
+                  {language === "sr" ? "Rezervišite odmah" : "Book Now"}
+                </Link>
+              </Button>
 
               <p className="text-center text-xs text-[#5A6B70] mt-4">
                 {language === "sr" ? "Besplatno otkazivanje do 24h pre" : "Free cancellation up to 24h before"}

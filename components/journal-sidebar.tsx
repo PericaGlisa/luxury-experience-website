@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/language-context"
 import { journalArticles } from "@/components/journal-content"
 
 export function JournalSidebar() {
-  const { language, t } = useLanguage()
+  const { language, t, getUrl } = useLanguage()
 
   const getCategorySlug = (name: string) =>
     name
@@ -39,19 +39,19 @@ export function JournalSidebar() {
   const categories = Array.from(categoryMap.values()).map((cat) => ({
     label: language === "sr" ? cat.labelSr : cat.labelEn,
     count: cat.count,
-    href: `/${language}/journal?category=${encodeURIComponent(cat.slug)}`,
+    href: getUrl(`/journal?category=${encodeURIComponent(cat.slug)}`),
   }))
 
   const recentPosts = journalArticles.slice(0, 3).map(article => ({
     title: article.title[language as "en" | "sr"],
     date: article.date,
     image: article.image,
-    href: `/${language}/journal/${article.slug[language as "en" | "sr"]}`,
+    href: getUrl(`/journal/${article.slug[language as "en" | "sr"]}`),
   }))
 
   return (
     <aside className="space-y-10">
-      <form action={`/${language}/journal`} method="GET" className="relative">
+      <form action={getUrl("/journal")} method="GET" className="relative">
         <input
           type="text"
           name="q"
@@ -125,10 +125,11 @@ export function JournalSidebar() {
             ? "Pišite našem timu i dobićete personalizovane predloge ruta, hotela i iskustava širom Sardinije."
             : "Reach out to our team for tailored routes, hotels, and experiences across Sardinia."}
         </p>
-        <Link href="/contact">
-          <button className="w-full bg-[#C9A962] hover:bg-[#b09351] text-[#1B4B5A] font-medium py-2 rounded-lg text-sm transition-colors">
-            {language === "sr" ? "Otvorite kontakt formu" : "Open contact form"}
-          </button>
+        <Link 
+          href={getUrl("/contact")}
+          className="block w-full bg-[#C9A962] hover:bg-[#b09351] text-[#1B4B5A] font-medium py-2 rounded-lg text-sm transition-colors"
+        >
+          {language === "sr" ? "Otvorite kontakt formu" : "Open contact form"}
         </Link>
       </div>
     </aside>

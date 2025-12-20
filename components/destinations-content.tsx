@@ -75,7 +75,7 @@ const destinations = [
 ]
 
 export function DestinationsContent() {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
 
   return (
     <section className="pt-36 md:pt-48 pb-16 px-5 md:px-10 lg:px-20">
@@ -83,22 +83,22 @@ export function DestinationsContent() {
         {/* Hero */}
         <div className="text-center mb-16">
           <p className="text-[#C9A962] text-sm font-medium tracking-widest uppercase mb-4">
-            {language === "sr" ? "Otkrijte Sardiniju" : "Discover Sardinia"}
+            {language === "sr" ? "Ekskluzivne destinacije" : "Exclusive Destinations"}
           </p>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-[#1B4B5A] mb-6">
-            {language === "sr" ? "Destinacije za vaše putovanje" : "Destinations for Your Journey"}
+            {language === "sr" ? "Otkrijte najlepše krajeve Sardinije" : "Discover Sardinia's Most Beautiful Places"}
           </h1>
           <p className="text-[#5A6B70] text-lg max-w-2xl mx-auto">
             {language === "sr"
-              ? "Od glamuroznih marina do skrivenih uvala, biramo lokacije koje savršeno uklapamo u vaš personalizovani plan putovanja na Sardiniju."
-              : "From glamorous marinas to hidden coves, we select locations that fit seamlessly into your custom Sardinia itinerary."}
+              ? "Od glamuroznih marina Costa Smeralde do netaknutih arhipelaga, svaka destinacija nudi jedinstvenu priču i nezaboravno iskustvo."
+              : "From glamorous marinas of Costa Smeralda to untouched archipelagos, each destination offers a unique story and unforgettable experience."}
           </p>
         </div>
 
-        {/* Destinations Grid - Added links to detail pages */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Destinations Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((dest) => (
-            <Link key={dest.id} href={`/${language}/destinations/${dest.slug[language as "en" | "sr"]}`}>
+            <Link key={dest.id} href={getUrl(`/destinations/${dest.slug[language as "en" | "sr"]}`)}>
               <div className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer">
                 <Image
                   src={dest.image || "/placeholder.svg"}

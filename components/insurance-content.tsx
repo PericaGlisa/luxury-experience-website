@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/language-context"
 import Link from "next/link"
 
 export function InsuranceContent() {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
 
   const benefits = {
     en: [
@@ -58,11 +58,11 @@ export function InsuranceContent() {
           </div>
 
           <div className="text-center">
-            <Link href={`/${language}/contact`}>
-              <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-3">
+            <Button asChild className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-3">
+              <Link href={getUrl("/contact")}>
                 {language === "sr" ? "Saznajte više" : "Learn More"}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

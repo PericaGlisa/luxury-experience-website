@@ -123,7 +123,7 @@ const featureNames: Record<string, { en: string; sr: string }> = {
 }
 
 export function YachtDetail({ id }: { id: string }) {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
   const yacht = yachts.find((y) => y.id === id || y.slug.en === id || y.slug.sr === id)
 
   if (!yacht) {
@@ -135,7 +135,7 @@ export function YachtDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href={`/${language}/yachts`}
+          href={getUrl("/yachts")}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -254,11 +254,11 @@ export function YachtDetail({ id }: { id: string }) {
                 </div>
               </div>
   
-                <Link href={`/${language}/contact`} className="block">
-                  <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
-                    {language === "sr" ? "Zatražite ponudu" : "Request Quote"}
-                  </Button>
+              <Button asChild className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
+                <Link href={getUrl("/contact")}>
+                  {language === "sr" ? "Zatražite ponudu" : "Request Quote"}
                 </Link>
+              </Button>
 
               <div className="flex items-center justify-center gap-2 mt-4 text-xs text-[#5A6B70]">
                 <Shield className="w-4 h-4 text-[#40B5AD]" />

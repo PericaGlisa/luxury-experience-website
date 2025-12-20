@@ -10,7 +10,7 @@ import { useLanguage } from "@/lib/language-context"
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel"
 
 export function HeroSection() {
-  const { t, language } = useLanguage()
+  const { t, language, getUrl } = useLanguage()
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [formData, setFormData] = useState({
@@ -134,16 +134,16 @@ export function HeroSection() {
             </h1>
             <p className="mt-6 text-[#5A6B70] text-base md:text-lg leading-relaxed max-w-xl">{t("heroDescription")}</p>
             <div className="flex items-center gap-3 mt-8">
-              <Link href={`/${language}/experiences`}>
-                <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-6 py-3 text-sm font-medium tracking-wide flex items-center gap-2">
+              <Button asChild className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-6 py-3 text-sm font-medium tracking-wide flex items-center gap-2">
+                <Link href={getUrl("/experiences")}>
                   {t("exploreMore")}
-                </Button>
-              </Link>
-              <Link href={`/${language}/destinations`}>
-                <button className="w-11 h-11 rounded-full border-2 border-[#1B4B5A] flex items-center justify-center text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white transition-colors">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="icon" className="w-11 h-11 rounded-full border-2 border-[#1B4B5A] flex items-center justify-center text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white transition-colors">
+                <Link href={getUrl("/destinations")}>
                   <ArrowUpRight className="w-5 h-5" />
-                </button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
 

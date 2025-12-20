@@ -76,7 +76,7 @@ const experiences = [
 ]
 
 export function ExperiencesContent() {
-  const { language } = useLanguage()
+  const { language, getUrl } = useLanguage()
 
   return (
     <section className="pt-36 md:pt-48 pb-16 px-5 md:px-10 lg:px-20">
@@ -101,7 +101,7 @@ export function ExperiencesContent() {
           {experiences.map((exp) => (
             <Link
               key={exp.id}
-              href={`/${language}/experiences/${exp.slug[language as "en" | "sr"]}`}
+              href={getUrl(`/experiences/${exp.slug[language as "en" | "sr"]}`)}
               className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 block"
             >
               <div className="relative h-56 overflow-hidden">
@@ -127,10 +127,10 @@ export function ExperiencesContent() {
                 <h3 className="font-serif text-xl text-[#1B4B5A] mb-2 group-hover:text-[#C9A962] transition-colors">{exp.title}</h3>
                 <p className="text-sm text-[#5A6B70] mb-4 line-clamp-2">{exp.description}</p>
                 <div className="flex items-center justify-end">
-                  <Button size="sm" className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-4 pointer-events-none">
+                  <div className="bg-[#1B4B5A] text-white rounded-full px-4 py-2 text-sm flex items-center gap-1">
                     {language === "sr" ? "Detalji" : "Details"}
-                    <ArrowUpRight className="w-4 h-4 ml-1" />
-                  </Button>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
             </Link>
