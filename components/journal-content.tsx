@@ -110,7 +110,8 @@ export function JournalContent() {
 
   const filteredArticles = journalArticles.filter((article) => {
     const matchesCategory = categorySlug
-      ? getCategorySlug(article.category.en) === categorySlug
+      ? getCategorySlug(article.category.en) === categorySlug || 
+        getCategorySlug(article.category.sr) === categorySlug
       : true
 
     if (!query) {
@@ -146,7 +147,9 @@ export function JournalContent() {
   const currentCategoryLabel =
     categorySlug &&
     journalArticles.find(
-      (article) => getCategorySlug(article.category.en) === categorySlug,
+      (article) => 
+        getCategorySlug(article.category.en) === categorySlug ||
+        getCategorySlug(article.category.sr) === categorySlug,
     )?.category[language as "en" | "sr"]
 
   return (

@@ -18,7 +18,7 @@ export function JournalSidebar() {
 
   const categoryMap = new Map<
     string,
-    { slug: string; labelEn: string; labelSr: string; count: number }
+    { slugEn: string; slugSr: string; labelEn: string; labelSr: string; count: number }
   >()
 
   for (const article of journalArticles) {
@@ -28,7 +28,8 @@ export function JournalSidebar() {
       existing.count += 1
     } else {
       categoryMap.set(key, {
-        slug: getCategorySlug(article.category.en),
+        slugEn: getCategorySlug(article.category.en),
+        slugSr: getCategorySlug(article.category.sr),
         labelEn: article.category.en,
         labelSr: article.category.sr,
         count: 1,
@@ -39,7 +40,7 @@ export function JournalSidebar() {
   const categories = Array.from(categoryMap.values()).map((cat) => ({
     label: language === "sr" ? cat.labelSr : cat.labelEn,
     count: cat.count,
-    href: getUrl(`/journal?category=${encodeURIComponent(cat.slug)}`),
+    href: getUrl(`/journal?category=${encodeURIComponent(language === "sr" ? cat.slugSr : cat.slugEn)}`),
   }))
 
   const recentPosts = journalArticles.slice(0, 3).map(article => ({
