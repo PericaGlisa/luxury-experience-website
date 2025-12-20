@@ -12,6 +12,7 @@ import { hotels } from "@/components/hotel-detail"
 const destinations = [
   {
     id: "1",
+    slug: { en: "porto-cervo", sr: "porto-cervo" },
     name: "Porto Cervo",
     tagline: { en: "The Heart of Costa Smeralda", sr: "Srce Costa Smeralde" },
     description: {
@@ -31,6 +32,7 @@ const destinations = [
   },
   {
     id: "2",
+    slug: { en: "la-maddalena", sr: "la-madalena" },
     name: "La Maddalena",
     tagline: { en: "Archipelago Paradise", sr: "Raj arhipelaga" },
     description: {
@@ -50,6 +52,7 @@ const destinations = [
   },
   {
     id: "3",
+    slug: { en: "cala-di-volpe", sr: "kala-di-volpe" },
     name: "Cala di Volpe",
     tagline: { en: "Legendary Bay", sr: "Legendarna uvala" },
     description: {
@@ -69,6 +72,7 @@ const destinations = [
   },
   {
     id: "4",
+    slug: { en: "porto-rotondo", sr: "porto-rotondo" },
     name: "Porto Rotondo",
     tagline: { en: "Authentic Elegance", sr: "Autentična elegancija" },
     description: {
@@ -88,6 +92,7 @@ const destinations = [
   },
   {
     id: "5",
+    slug: { en: "poltu-quatu", sr: "poltu-kvatu" },
     name: "Poltu Quatu",
     tagline: { en: "The Hidden Fjord", sr: "Skriveni fjord" },
     description: {
@@ -107,6 +112,7 @@ const destinations = [
   },
   {
     id: "6",
+    slug: { en: "san-pantaleo", sr: "san-pantaleo" },
     name: "San Pantaleo",
     tagline: { en: "Bohemian Mountain Village", sr: "Boemsko planinsko selo" },
     description: {
@@ -160,7 +166,7 @@ const highlightNames: Record<string, { en: string; sr: string }> = {
 
 export function DestinationDetail({ id }: { id: string }) {
   const { language } = useLanguage()
-  const destination = destinations.find((d) => d.id === id)
+  const destination = destinations.find((d) => d.id === id || d.slug.en === id || d.slug.sr === id)
 
   if (!destination) {
     return null
@@ -173,7 +179,7 @@ export function DestinationDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href="/destinations"
+          href={`/${language}/destinations`}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -237,7 +243,7 @@ export function DestinationDetail({ id }: { id: string }) {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {destinationHotels.map((hotel) => (
-                    <Link key={hotel.id} href={`/hotels/${hotel.id}`}>
+                    <Link key={hotel.id} href={`/${language}/hotels/${hotel.slug[language as "en" | "sr"]}`}>
                       <div className="group relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow cursor-pointer">
                         <div className="relative h-40 overflow-hidden">
                           <Image
@@ -289,7 +295,7 @@ export function DestinationDetail({ id }: { id: string }) {
                 </div>
               </div>
 
-              <Link href="/contact" className="block">
+              <Link href={`/${language}/contact`} className="block">
                 <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
                   {language === "sr" ? "Planirajte putovanje" : "Plan Your Trip"}
                 </Button>

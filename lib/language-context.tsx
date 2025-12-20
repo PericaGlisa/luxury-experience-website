@@ -1,6 +1,7 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import { useRouter, usePathname } from "next/navigation"
 
 type Language = "en" | "sr"
 
@@ -125,14 +126,39 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("sr")
+export function LanguageProvider({ 
+  children, 
+  initialLanguage = "sr" 
+}: { 
+  children: ReactNode
+  initialLanguage?: Language
+}) {
+  const [language, setLanguage] = useState<Language>(initialLanguage)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  // Sinhronizacija URL-a kada se promeni jezik
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang)
+    
+    if (!pathname) return
+
+    const segments = pathname.split("/")
+    segments[1] = lang
+    const newPathname = segments.join("/")
+    
+    router.push(newPathname)
+  }
 
   const t = (key: TranslationKey): string => {
     return translations[language][key] || key
   }
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
 export function useLanguage() {

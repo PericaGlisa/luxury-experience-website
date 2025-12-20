@@ -58,7 +58,7 @@ export function InsuranceContent() {
           </div>
 
           <div className="text-center">
-            <Link href="/contact">
+            <Link href={`/${language}/contact`}>
               <Button className="bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-8 py-3">
                 {language === "sr" ? "Saznajte više" : "Learn More"}
               </Button>

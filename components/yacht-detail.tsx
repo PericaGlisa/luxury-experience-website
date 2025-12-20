@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-context"
 const yachts = [
   {
     id: "1",
+    slug: { en: "azzurra", sr: "azura" },
     name: "Azzurra",
     type: "Motor Yacht",
     length: "32m",
@@ -33,6 +34,7 @@ const yachts = [
   },
   {
     id: "2",
+    slug: { en: "vento-di-mare", sr: "morski-vetar" },
     name: "Vento di Mare",
     type: "Sailing Yacht",
     length: "24m",
@@ -57,6 +59,7 @@ const yachts = [
   },
   {
     id: "3",
+    slug: { en: "costa-bella", sr: "lepa-obala" },
     name: "Costa Bella",
     type: "Catamaran",
     length: "18m",
@@ -81,6 +84,7 @@ const yachts = [
   },
   {
     id: "4",
+    slug: { en: "mare-nostrum", sr: "nase-more" },
     name: "Mare Nostrum",
     type: "Mega Yacht",
     length: "52m",
@@ -120,7 +124,7 @@ const featureNames: Record<string, { en: string; sr: string }> = {
 
 export function YachtDetail({ id }: { id: string }) {
   const { language } = useLanguage()
-  const yacht = yachts.find((y) => y.id === id)
+  const yacht = yachts.find((y) => y.id === id || y.slug.en === id || y.slug.sr === id)
 
   if (!yacht) {
     return null
@@ -131,7 +135,7 @@ export function YachtDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href="/yachts"
+          href={`/${language}/yachts`}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -249,12 +253,12 @@ export function YachtDetail({ id }: { id: string }) {
                   <p className="text-sm text-[#1B4B5A] font-medium">3 {language === "sr" ? "dana" : "days"}</p>
                 </div>
               </div>
-
-              <Link href="/contact" className="block">
-                <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
-                  {language === "sr" ? "Zatražite ponudu" : "Request Quote"}
-                </Button>
-              </Link>
+  
+                <Link href={`/${language}/contact`} className="block">
+                  <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
+                    {language === "sr" ? "Zatražite ponudu" : "Request Quote"}
+                  </Button>
+                </Link>
 
               <div className="flex items-center justify-center gap-2 mt-4 text-xs text-[#5A6B70]">
                 <Shield className="w-4 h-4 text-[#40B5AD]" />

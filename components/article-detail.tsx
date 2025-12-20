@@ -8,6 +8,7 @@ import { useLanguage } from "@/lib/language-context"
 const articles = [
   {
     id: "1",
+    slug: { en: "hidden-beaches-la-maddalena", sr: "skrivene-plaze-la-maddalene" },
     title: {
       en: "Hidden Beaches of La Maddalena",
       sr: "Skrivene plaže La Maddalene",
@@ -53,6 +54,7 @@ const articles = [
   },
   {
     id: "2",
+    slug: { en: "sardinian-wine-terroir-journey", sr: "sardinijsko-vino-putovanje-kroz-teruare" },
     title: {
       en: "Sardinian Wine: A Journey Through Terroir",
       sr: "Sardinijsko vino: Putovanje kroz teruare",
@@ -78,7 +80,7 @@ const articles = [
       <p>Cannonau, međunarodno poznat kao Grenache, uzgaja se na Sardiniji vekovima. Neki veruju da je to originalna domovina ove sorte pre nego što se proširila u Francusku i Španiju. Vina su moćna ali elegantna, sa notama zrele trešnje, mediteranskog bilja i prepoznatljivog mineralnog završetka. Najbolji primeri dolaze iz planinskog regiona Ogliastra.</p>
       
       <h2>Vermentino di Gallura: Belo zlato</h2>
-      <p>Jedino DOCG (najviša oznaka kvaliteta) vino na Sardiniji, Vermentino di Gallura uzgaja se u granitnim brdima regiona Gallura blizu Costa Smeralde. Ova vina nude sjajnu kiselost, note citrusa i belog cveća, i prepoznatljiv slani završetak koji govori o blizini mora.</p>
+      <p>Jedino DOCG (najviša oznaka kvaliteta) vino na Sardiniji, Vermentino di Gallura uzgaja se u granitnim brdima regiona Gallura blizu Costa Smeralde. Ova vina nude sjajnu kiselost, note citrusa i belog cveća, i prepoznatljiv slani završetak koji govori o približnosti mora.</p>
       
       <h2>Gde degustirati</h2>
       <p>Preporučujemo posetu vinariji Surrau u Arzacheni, samo nekoliko minuta od Porto Cerva. Njihova zadivljujuća moderna arhitektura čuva vekovima stare tradicije pravljenja vina. Za intimnije iskustvo, potražite male porodične kantice u selima Jerzu i Mamoiada.</p>`,
@@ -92,6 +94,7 @@ const articles = [
   },
   {
     id: "3",
+    slug: { en: "slow-travel-sardinia", sr: "umetnost-sporog-putovanja-na-sardiniji" },
     title: {
       en: "The Art of Slow Travel in Sardinia",
       sr: "Umetnost sporog putovanja na Sardiniji",
@@ -131,6 +134,7 @@ const articles = [
   },
   {
     id: "4",
+    slug: { en: "best-restaurants-porto-cervo", sr: "najbolji-restorani-u-porto-cervu" },
     title: {
       en: "Best Restaurants in Porto Cervo",
       sr: "Najbolji restorani u Porto Cervu",
@@ -170,6 +174,7 @@ const articles = [
   },
   {
     id: "5",
+    slug: { en: "yacht-etiquette-guide", sr: "jahting-etikecija-vodic-za-pocetnike" },
     title: {
       en: "Yacht Etiquette: A First-Timer's Guide",
       sr: "Jahting etikecija: Vodič za početnike",
@@ -229,7 +234,7 @@ import { JournalSidebar } from "@/components/journal-sidebar"
 
 export function ArticleDetail({ id }: { id: string }) {
   const { language } = useLanguage()
-  const article = articles.find((a) => a.id === id)
+  const article = articles.find((a) => a.id === id || a.slug.en === id || a.slug.sr === id)
 
   if (!article) {
     return null
@@ -240,7 +245,7 @@ export function ArticleDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href="/journal"
+          href={`/${language}/journal`}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />

@@ -1,13 +1,13 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { NewsletterSection } from "@/components/newsletter-section"
-import { ExperiencesContent } from "@/components/experiences-content"
+import { DestinationsContent } from "@/components/destinations-content"
 
-export default function ExperiencesPage() {
+export default function DestinationsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#F7F4EE]">
       <Header />
-      <ExperiencesContent />
+      <DestinationsContent />
       <NewsletterSection />
       <Footer />
     </main>

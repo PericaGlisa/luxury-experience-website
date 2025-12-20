@@ -6,27 +6,27 @@ import { Instagram, Facebook, Linkedin, Phone, Mail, MapPin, Heart } from "lucid
 import { useLanguage } from "@/lib/language-context"
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
 
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: "instant" })
   }
 
   const quickLinks = [
-    { label: t("experiences"), href: "/experiences" },
-    { label: t("destinations"), href: "/destinations" },
-    { label: t("yachtCharters"), href: "/yachts" },
-    { label: t("journal"), href: "/journal" },
-    { label: t("booking"), href: "/booking" },
-    { label: t("contact"), href: "/contact" },
+    { label: t("experiences"), href: `/${language}/experiences` },
+    { label: t("destinations"), href: `/${language}/destinations` },
+    { label: t("yachtCharters"), href: `/${language}/yachts` },
+    { label: t("journal"), href: `/${language}/journal` },
+    { label: t("booking"), href: `/${language}/booking` },
+    { label: t("contact"), href: `/${language}/contact` },
   ]
 
   const supportLinks = [
-    { label: t("faq"), href: "/faq" },
-    { label: t("privacyPolicy"), href: "/privacy" },
-    { label: t("termsOfService"), href: "/terms" },
-    { label: t("cancellationPolicy"), href: "/cancellation" },
-    { label: t("travelInsurance"), href: "/insurance" },
+    { label: t("faq"), href: `/${language}/faq` },
+    { label: t("privacyPolicy"), href: `/${language}/privacy` },
+    { label: t("termsOfService"), href: `/${language}/terms` },
+    { label: t("cancellationPolicy"), href: `/${language}/cancellation` },
+    { label: t("travelInsurance"), href: `/${language}/insurance` },
   ]
 
   return (
@@ -34,7 +34,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <Link href="/" onClick={handleLinkClick}>
+            <Link href={`/${language}`} onClick={handleLinkClick}>
               <Image
                 src="/logo.png"
                 alt="Maestrale Luxury Experience"

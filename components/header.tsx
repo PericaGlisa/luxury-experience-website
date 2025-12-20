@@ -46,7 +46,10 @@ export function Header() {
     }
   }, [mobileMenuOpen])
 
-  const currentNavItems = navItems[language]
+  const currentNavItems = (navItems[language] || navItems.en).map(item => ({
+    ...item,
+    href: `/${language}${item.href === "/" ? "" : item.href}`
+  }))
 
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: "instant" })
@@ -55,7 +58,7 @@ export function Header() {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 px-5 md:px-10 lg:px-20 py-5">
       <nav className="relative flex items-center justify-between">
-        <Link href="/" className="flex items-center" onClick={handleLinkClick}>
+        <Link href={`/${language}`} className="flex items-center" onClick={handleLinkClick}>
           <Image
             src="/logo.png"
             alt="Maestrale Luxury Experience"
@@ -114,7 +117,7 @@ export function Header() {
               </div>
             )}
           </div>
-          <Link href="/booking" onClick={handleLinkClick}>
+          <Link href={`/${language}/booking`} onClick={handleLinkClick}>
             <Button className="hidden md:flex bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full px-6 py-2 text-sm font-medium tracking-wide">
               {t("bookNow")}
             </Button>
@@ -140,7 +143,7 @@ export function Header() {
         <div className="flex flex-col h-full">
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between px-5 py-5 border-b border-[#F7F4EE]">
-            <Link href="/" className="flex items-center" onClick={() => {
+            <Link href={`/${language}`} className="flex items-center" onClick={() => {
               setMobileMenuOpen(false)
               handleLinkClick()
             }}>
@@ -206,7 +209,7 @@ export function Header() {
                 </div>
 
                 <Link
-                  href="/booking"
+                  href={`/${language}/booking`}
                   onClick={() => {
                     setMobileMenuOpen(false)
                     handleLinkClick()

@@ -8,6 +8,7 @@ import { useLanguage } from "@/lib/language-context"
 const destinations = [
   {
     id: "1",
+    slug: { en: "porto-cervo", sr: "porto-cervo" },
     name: "Porto Cervo",
     description: {
       en: "The glamorous heart of Costa Smeralda, known for luxury boutiques and celebrity sightings.",
@@ -18,6 +19,7 @@ const destinations = [
   },
   {
     id: "2",
+    slug: { en: "la-maddalena", sr: "la-madalena" },
     name: "La Maddalena",
     description: {
       en: "An archipelago of pristine islands with crystal-clear waters and untouched beaches.",
@@ -28,6 +30,7 @@ const destinations = [
   },
   {
     id: "3",
+    slug: { en: "cala-di-volpe", sr: "kala-di-volpe" },
     name: "Cala di Volpe",
     description: {
       en: "Home to the iconic Hotel Cala di Volpe and some of the most exclusive resorts.",
@@ -38,6 +41,7 @@ const destinations = [
   },
   {
     id: "4",
+    slug: { en: "porto-rotondo", sr: "porto-rotondo" },
     name: "Porto Rotondo",
     description: {
       en: "A charming village with traditional architecture and world-class golf courses.",
@@ -48,6 +52,7 @@ const destinations = [
   },
   {
     id: "5",
+    slug: { en: "poltu-quatu", sr: "poltu-kvatu" },
     name: "Poltu Quatu",
     description: {
       en: "A hidden fjord transformed into an exclusive marina village.",
@@ -58,6 +63,7 @@ const destinations = [
   },
   {
     id: "6",
+    slug: { en: "san-pantaleo", sr: "san-pantaleo" },
     name: "San Pantaleo",
     description: {
       en: "A bohemian village nestled in the mountains with artisan markets and local charm.",
@@ -92,7 +98,7 @@ export function DestinationsContent() {
         {/* Destinations Grid - Added links to detail pages */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {destinations.map((dest) => (
-            <Link key={dest.id} href={`/destinations/${dest.id}`}>
+            <Link key={dest.id} href={`/${language}/destinations/${dest.slug[language as "en" | "sr"]}`}>
               <div className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer">
                 <Image
                   src={dest.image || "/placeholder.svg"}

@@ -122,9 +122,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply text-foreground min-h-screen;
-    background: radial-gradient(circle at 50% 0%, #fffefc 0%, #f7f4ee 100%);
-    background-attachment: fixed;
+    @apply bg-background text-foreground;
   }
 }
 

@@ -24,6 +24,7 @@ export const hotels = [
   {
     id: "1",
     name: "Costa Smeralda Resort",
+    slug: { en: "costa-smeralda-resort", sr: "costa-smeralda-rizort" },
     location: "Porto Cervo, Sardinia",
     rating: 4.9,
     reviews: 3420,
@@ -45,6 +46,7 @@ export const hotels = [
   {
     id: "2",
     name: "Skyview Retreat",
+    slug: { en: "skyview-retreat", sr: "skyview-utociste" },
     location: "La Maddalena, Sardinia",
     rating: 4.8,
     reviews: 2345,
@@ -66,6 +68,7 @@ export const hotels = [
   {
     id: "3",
     name: "Villa Mediterranea",
+    slug: { en: "villa-mediterranea", sr: "vila-mediteranea" },
     location: "Cala di Volpe, Sardinia",
     rating: 4.7,
     reviews: 1890,
@@ -87,6 +90,7 @@ export const hotels = [
   {
     id: "4",
     name: "Emerald Bay Hotel",
+    slug: { en: "emerald-bay-hotel", sr: "hotel-emerald-bay" },
     location: "Porto Rotondo, Sardinia",
     rating: 4.8,
     reviews: 2156,
@@ -127,7 +131,7 @@ const amenityNames: Record<string, { en: string; sr: string }> = {
 
 export function HotelDetail({ id }: { id: string }) {
   const { language } = useLanguage()
-  const hotel = hotels.find((h) => h.id === id)
+  const hotel = hotels.find((h) => h.id === id || h.slug.en === id || h.slug.sr === id)
 
   if (!hotel) {
     return null
@@ -138,7 +142,7 @@ export function HotelDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href="/destinations"
+          href={`/${language}/destinations`}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -231,7 +235,7 @@ export function HotelDetail({ id }: { id: string }) {
                 </p>
               </div>
 
-              <Link href="/contact" className="block">
+              <Link href={`/${language}/contact`} className="block">
                 <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white rounded-full py-6 text-base">
                   {language === "sr" ? "Planirajte putovanje" : "Plan Your Trip"}
                 </Button>

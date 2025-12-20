@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-context"
 const yachts = [
   {
     id: "1",
+    slug: { en: "azzurra", sr: "azura" },
     name: "Azzurra",
     type: { en: "Motor Yacht", sr: "Motorna jahta" },
     length: "32m",
@@ -20,6 +21,7 @@ const yachts = [
   },
   {
     id: "2",
+    slug: { en: "vento-di-mare", sr: "morski-vetar" },
     name: "Vento di Mare",
     type: { en: "Sailing Yacht", sr: "Jedrilica" },
     length: "24m",
@@ -31,6 +33,7 @@ const yachts = [
   },
   {
     id: "3",
+    slug: { en: "costa-bella", sr: "lepa-obala" },
     name: "Costa Bella",
     type: { en: "Catamaran", sr: "Katamaran" },
     length: "18m",
@@ -42,6 +45,7 @@ const yachts = [
   },
   {
     id: "4",
+    slug: { en: "mare-nostrum", sr: "nase-more" },
     name: "Mare Nostrum",
     type: { en: "Mega Yacht", sr: "Mega jahta" },
     length: "52m",
@@ -77,7 +81,7 @@ export function YachtsContent() {
         {/* Yachts Grid - Added links to detail pages */}
         <div className="grid lg:grid-cols-2 gap-8">
           {yachts.map((yacht) => (
-            <Link key={yacht.id} href={`/yachts/${yacht.id}`}>
+            <Link key={yacht.id} href={`/${language}/yachts/${yacht.slug[language as "en" | "sr"]}`}>
               <div className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row cursor-pointer">
                 <div className="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
                   <Image

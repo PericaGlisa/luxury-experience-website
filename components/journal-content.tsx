@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-context"
 export const journalArticles = [
   {
     id: "1",
+    slug: { en: "hidden-beaches-la-maddalena", sr: "skrivene-plaze-la-maddalene" },
     title: {
       en: "Hidden Beaches of La Maddalena",
       sr: "Skrivene plaže La Maddalene",
@@ -25,6 +26,7 @@ export const journalArticles = [
   },
   {
     id: "2",
+    slug: { en: "sardinian-wine-terroir-journey", sr: "sardinijsko-vino-putovanje-kroz-teruare" },
     title: {
       en: "Sardinian Wine: A Journey Through Terroir",
       sr: "Sardinijsko vino: Putovanje kroz teruare",
@@ -41,6 +43,7 @@ export const journalArticles = [
   },
   {
     id: "3",
+    slug: { en: "slow-travel-sardinia", sr: "umetnost-sporog-putovanja-na-sardiniji" },
     title: {
       en: "The Art of Slow Travel in Sardinia",
       sr: "Umetnost sporog putovanja na Sardiniji",
@@ -57,6 +60,7 @@ export const journalArticles = [
   },
   {
     id: "4",
+    slug: { en: "best-restaurants-porto-cervo", sr: "najbolji-restorani-u-porto-cervu" },
     title: {
       en: "Best Restaurants in Porto Cervo",
       sr: "Najbolji restorani u Porto Cervu",
@@ -73,6 +77,7 @@ export const journalArticles = [
   },
   {
     id: "5",
+    slug: { en: "yacht-etiquette-guide", sr: "jahting-etikecija-vodic-za-pocetnike" },
     title: {
       en: "Yacht Etiquette: A First-Timer's Guide",
       sr: "Jahting etikecija: Vodič za početnike",
@@ -190,7 +195,7 @@ export function JournalContent() {
 
         {!hasFilters && featuredArticle && (
           <div className="mb-12">
-            <Link href={`/journal/${featuredArticle.id}`}>
+            <Link href={`/${language}/journal/${featuredArticle.slug[language as "en" | "sr"]}`}>
               <div className="group relative h-[500px] rounded-3xl overflow-hidden cursor-pointer">
                 <Image
                   src={featuredArticle.image || "/placeholder.svg"}
@@ -224,7 +229,7 @@ export function JournalContent() {
         {/* Articles Grid - Added Link wrappers */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {regularArticles.map((article) => (
-            <Link key={article.id} href={`/journal/${article.id}`}>
+            <Link key={article.id} href={`/${language}/journal/${article.slug[language as "en" | "sr"]}`}>
               <div className="group cursor-pointer">
                 <div className="relative h-52 rounded-2xl overflow-hidden mb-4">
                   <Image

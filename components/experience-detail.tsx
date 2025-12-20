@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-context"
 const experiences = [
   {
     id: 1,
+    slug: { en: "private-yacht-charter", sr: "privatni-carter-jahti" },
     title: "Private Yacht Charter",
     location: "Costa Smeralda",
     description: {
@@ -37,6 +38,7 @@ const experiences = [
   },
   {
     id: 2,
+    slug: { en: "wine-tasting-tour", sr: "tura-degustacije-vina" },
     title: "Wine Tasting Tour",
     location: "Gallura Region",
     description: {
@@ -65,6 +67,7 @@ const experiences = [
   },
   {
     id: 3,
+    slug: { en: "helicopter-island-tour", sr: "tura-helikopterom" },
     title: "Helicopter Island Tour",
     location: "La Maddalena Archipelago",
     description: {
@@ -92,6 +95,7 @@ const experiences = [
   },
   {
     id: 4,
+    slug: { en: "gourmet-dining-experience", sr: "gurmansko-iskustvo-vecere" },
     title: "Gourmet Dining Experience",
     location: "Secret Sunset Location",
     description: {
@@ -119,6 +123,7 @@ const experiences = [
   },
   {
     id: 5,
+    slug: { en: "scuba-diving-adventure", sr: "avantura-ronjenja" },
     title: "Scuba Diving Adventure",
     location: "Marine Protected Area",
     description: {
@@ -147,6 +152,7 @@ const experiences = [
   },
   {
     id: 6,
+    slug: { en: "golf-and-spa-retreat", sr: "golf-i-spa-odmor" },
     title: "Golf & Spa Retreat",
     location: "Pevero Golf Club",
     description: {
@@ -204,8 +210,7 @@ const includesNames: Record<string, { en: string; sr: string }> = {
 
 export function ExperienceDetail({ id }: { id: string }) {
   const { language } = useLanguage()
-  const experienceId = Number(id)
-  const experience = experiences.find((e) => e.id === experienceId)
+  const experience = experiences.find((e) => e.id.toString() === id || e.slug.en === id || e.slug.sr === id)
 
   if (!experience) {
     return null
@@ -216,7 +221,7 @@ export function ExperienceDetail({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <Link
-          href="/experiences"
+          href={`/${language}/experiences`}
           className="inline-flex items-center gap-2 text-[#5A6B70] hover:text-[#1B4B5A] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -329,7 +334,7 @@ export function ExperienceDetail({ id }: { id: string }) {
                   ? "Sve detalje o datumu, broju gostiju i vašim željama dogovaramo kroz kontakt formu, kao deo vašeg ukupnog plana putovanja na Sardiniju. Pošaljite nam upit i naš tim će vam pripremiti personalizovanu ponudu za ovo iskustvo."
                   : "We arrange all details like date, number of guests and your preferences through the contact form, as part of your overall trip plan to Sardinia. Send us an inquiry and our team will prepare a tailored offer for this experience."}
               </p>
-              <Link href="/contact">
+              <Link href={`/${language}/contact`}>
                 <Button className="w-full bg-[#1B4B5A] hover:bg-[#0D3D4A] text-white font-medium py-6 text-base rounded-full">
                   {language === "sr" ? "Otvorite kontakt formu" : "Open Contact Form"}
                 </Button>

@@ -39,33 +39,19 @@ export function JournalSidebar() {
   const categories = Array.from(categoryMap.values()).map((cat) => ({
     label: language === "sr" ? cat.labelSr : cat.labelEn,
     count: cat.count,
-    href: `/journal?category=${encodeURIComponent(cat.slug)}`,
+    href: `/${language}/journal?category=${encodeURIComponent(cat.slug)}`,
   }))
 
-  const recentPosts = [
-    {
-      title: language === "sr" ? "Najbolji restorani u Porto Cervu" : "Best Restaurants in Porto Cervo",
-      date: "Nov 20, 2025",
-      image: "/luxury-private-dining-sunset-mediterranean.jpg",
-      href: "/journal/4",
-    },
-    {
-      title: language === "sr" ? "Jahting etikecija: Vodič" : "Yacht Etiquette: A Guide",
-      date: "Nov 15, 2025",
-      image: "/luxury-yacht-sailing-mediterranean-costa-smeralda.jpg",
-      href: "/journal/5",
-    },
-    {
-      title: language === "sr" ? "Jesen na Sardiniji" : "Autumn in Sardinia",
-      date: "Oct 28, 2025",
-      image: "/san-pantaleo-sardinia-mountain-village-authentic.jpg",
-      href: "/journal/3",
-    },
-  ]
+  const recentPosts = journalArticles.slice(0, 3).map(article => ({
+    title: article.title[language as "en" | "sr"],
+    date: article.date,
+    image: article.image,
+    href: `/${language}/journal/${article.slug[language as "en" | "sr"]}`,
+  }))
 
   return (
     <aside className="space-y-10">
-      <form action="/journal" method="GET" className="relative">
+      <form action={`/${language}/journal`} method="GET" className="relative">
         <input
           type="text"
           name="q"

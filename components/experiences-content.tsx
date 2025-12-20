@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-context"
 const experiences = [
   {
     id: 1,
+    slug: { en: "private-yacht-charter", sr: "privatni-carter-jahti" },
     title: "Private Yacht Charter",
     description: "Sail the emerald waters of Costa Smeralda aboard a luxury yacht with personal crew.",
     duration: "Full Day",
@@ -19,6 +20,7 @@ const experiences = [
   },
   {
     id: 2,
+    slug: { en: "wine-tasting-tour", sr: "tura-degustacije-vina" },
     title: "Wine Tasting Tour",
     description: "Explore Sardinian vineyards and taste exclusive Cannonau and Vermentino wines.",
     duration: "Half Day",
@@ -29,6 +31,7 @@ const experiences = [
   },
   {
     id: 3,
+    slug: { en: "helicopter-island-tour", sr: "tura-helikopterom" },
     title: "Helicopter Island Tour",
     description: "Breathtaking aerial views of La Maddalena archipelago and hidden beaches.",
     duration: "2 Hours",
@@ -39,6 +42,7 @@ const experiences = [
   },
   {
     id: 4,
+    slug: { en: "gourmet-dining-experience", sr: "gurmansko-iskustvo-vecere" },
     title: "Gourmet Dining Experience",
     description: "Private chef experience with fresh Mediterranean cuisine at sunset locations.",
     duration: "Evening",
@@ -49,6 +53,7 @@ const experiences = [
   },
   {
     id: 5,
+    slug: { en: "scuba-diving-adventure", sr: "avantura-ronjenja" },
     title: "Scuba Diving Adventure",
     description: "Discover underwater caves and marine life with expert diving instructors.",
     duration: "Half Day",
@@ -59,6 +64,7 @@ const experiences = [
   },
   {
     id: 6,
+    slug: { en: "golf-and-spa-retreat", sr: "golf-i-spa-odmor" },
     title: "Golf & Spa Retreat",
     description: "Championship golf followed by exclusive spa treatments with sea views.",
     duration: "Full Day",
@@ -95,7 +101,7 @@ export function ExperiencesContent() {
           {experiences.map((exp) => (
             <Link
               key={exp.id}
-              href={`/experiences/${exp.id}`}
+              href={`/${language}/experiences/${exp.slug[language as "en" | "sr"]}`}
               className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 block"
             >
               <div className="relative h-56 overflow-hidden">
