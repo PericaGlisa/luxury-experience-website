@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { notFound } from "next/navigation"
 
 export const hotels = [
   {
@@ -132,9 +133,9 @@ const amenityNames: Record<string, { en: string; sr: string }> = {
 export function HotelDetail({ id }: { id: string }) {
   const { language, getUrl } = useLanguage()
   const hotel = hotels.find((h) => h.id === id || h.slug.en === id || h.slug.sr === id)
-
+  
   if (!hotel) {
-    return null
+    notFound()
   }
 
   return (

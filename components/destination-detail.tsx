@@ -8,6 +8,7 @@ import { MapPin, ArrowLeft, Sun, Umbrella, Utensils, ShoppingBag, Camera, Star }
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 import { hotels } from "@/components/hotel-detail"
+import { notFound } from "next/navigation"
 
 const destinations = [
   {
@@ -167,9 +168,9 @@ const highlightNames: Record<string, { en: string; sr: string }> = {
 export function DestinationDetail({ id }: { id: string }) {
   const { language, getUrl } = useLanguage()
   const destination = destinations.find((d) => d.id === id || d.slug.en === id || d.slug.sr === id)
-
+  
   if (!destination) {
-    return null
+    notFound()
   }
 
   const destinationHotels = hotels.filter((hotel) => hotel.location.includes(destination.name))

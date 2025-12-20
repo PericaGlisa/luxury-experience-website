@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Anchor, Users, Ruler, Star, ArrowLeft, Compass, Shield, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { notFound } from "next/navigation"
 
 const yachts = [
   {
@@ -125,9 +126,9 @@ const featureNames: Record<string, { en: string; sr: string }> = {
 export function YachtDetail({ id }: { id: string }) {
   const { language, getUrl } = useLanguage()
   const yacht = yachts.find((y) => y.id === id || y.slug.en === id || y.slug.sr === id)
-
+  
   if (!yacht) {
-    return null
+    notFound()
   }
 
   return (

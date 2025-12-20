@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock, ArrowLeft, User, Tag, ChevronRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import { notFound } from "next/navigation"
 
 const articles = [
   {
@@ -235,9 +236,9 @@ import { JournalSidebar } from "@/components/journal-sidebar"
 export function ArticleDetail({ id }: { id: string }) {
   const { language, getUrl } = useLanguage()
   const article = articles.find((a) => a.id === id || a.slug.en === id || a.slug.sr === id)
-
+  
   if (!article) {
-    return null
+    notFound()
   }
 
   return (

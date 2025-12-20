@@ -59,6 +59,10 @@ const translations = {
     travelInsurance: "Travel Insurance",
     allRightsReserved: "All rights reserved.",
     craftedWith: "Crafted with passion for Sardinia",
+    // 404
+    notFoundTitle: "Lost in Paradise?",
+    notFoundDescription: "The page you are looking for has sailed away or doesn't exist. Let us guide you back to the shores of Costa Smeralda.",
+    backToHome: "Return to Home",
   },
   sr: {
     // Header
@@ -113,6 +117,10 @@ const translations = {
     travelInsurance: "Putno osiguranje",
     allRightsReserved: "Sva prava zadržana.",
     craftedWith: "Napravljeno sa strašću za Sardiniju",
+    // 404
+    notFoundTitle: "Izgubljeni u raju?",
+    notFoundDescription: "Stranica koju tražite je otplovila ili ne postoji. Dopustite nam da vas vratimo na obale Kosta Smeralde.",
+    backToHome: "Povratak na početnu",
   },
 }
 

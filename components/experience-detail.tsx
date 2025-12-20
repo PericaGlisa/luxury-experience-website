@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Clock, Users, Star, ArrowLeft, Check, Calendar, MapPin, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { notFound } from "next/navigation"
 
 const experiences = [
   {
@@ -211,9 +212,9 @@ const includesNames: Record<string, { en: string; sr: string }> = {
 export function ExperienceDetail({ id }: { id: string }) {
   const { language, getUrl } = useLanguage()
   const experience = experiences.find((e) => e.id.toString() === id || e.slug.en === id || e.slug.sr === id)
-
+  
   if (!experience) {
-    return null
+    notFound()
   }
 
   return (
