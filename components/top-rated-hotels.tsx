@@ -79,7 +79,7 @@ export function TopRatedHotels() {
               size="icon"
               className="w-10 h-10 rounded-full bg-[#1B4B5A] flex items-center justify-center text-white hover:bg-[#0D3D4A] transition-colors"
             >
-              <Link href={getUrl("/experiences")}>
+              <Link href={getUrl("/destinations")}>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </Button>

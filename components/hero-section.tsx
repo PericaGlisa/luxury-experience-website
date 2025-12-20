@@ -140,7 +140,7 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="icon" className="w-11 h-11 rounded-full border-2 border-[#1B4B5A] flex items-center justify-center text-[#1B4B5A] hover:bg-[#1B4B5A] hover:text-white transition-colors">
-                <Link href={getUrl("/experiences")}>
+                <Link href={getUrl("/destinations")}>
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </Button>
