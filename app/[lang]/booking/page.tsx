@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr" 
     ? "Rezervišite svoje luksuzno iskustvo na Sardiniji. Jahte, privatni letovi, transferi i ekskluzivne ture."
     : "Book your luxury Sardinia experience. Yacht charters, private flights, transfers, and exclusive tours."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

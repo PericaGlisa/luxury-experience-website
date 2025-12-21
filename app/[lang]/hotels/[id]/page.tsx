@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const description = language === "sr"
     ? `${hotel.name} - Luksuzni smeštaj u mestu ${hotel.location}. Rezervišite savršen odmor na Sardiniji sa Maestrale.`
     : `${hotel.name} - Luxury stay in ${hotel.location}. Book your perfect Sardinia holiday with Maestrale.`
-  const image = hotel.images?.[0] || "/og-image.jpg"
+  const image = hotel.images?.[0] || "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

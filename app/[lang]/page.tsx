@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
   const title = translations[language].homeTitle
   const description = translations[language].siteDescription
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

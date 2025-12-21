@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const description = language === "sr" 
     ? `Doživite Mediteran na jahti ${yacht.name}, dužine ${yacht.length}. Rezervišite svoj ekskluzivni čarter na Sardiniji sa Maestrale.`
     : `Experience the Mediterranean aboard ${yacht.name}, a ${yacht.length} luxury yacht. Book your exclusive Sardinia yacht charter with Maestrale.`
-  const image = yacht.image || yacht.images?.[0] || "/og-image.jpg"
+  const image = yacht.image || yacht.images?.[0] || "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr"
     ? "Politika otkazivanja za Maestrale Luxury Experience rezervacije. Detalji o povraćaju sredstava i uslovima."
     : "Cancellation Policy for Maestrale Luxury Experience bookings. Details on refunds and conditions."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

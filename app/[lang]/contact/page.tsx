@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr"
     ? "Kontaktirajte Maestrale Luxury Experience tim. Tu smo da vam pomognemo u planiranju vašeg savršenog odmora na Sardiniji."
     : "Contact the Maestrale Luxury Experience team. We are here to help you plan your perfect Sardinia getaway."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

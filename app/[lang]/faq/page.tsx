@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr"
     ? "Pronađite odgovore na najčešća pitanja o luksuznim putovanjima, rezervacijama i uslugama na Sardiniji."
     : "Find answers to frequently asked questions about luxury travel, bookings, and services in Sardinia."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

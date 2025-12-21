@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   const title = `${article.title[language]} | Maestrale Journal`
   const description = article.excerpt[language]
-  const image = article.image || "/og-image.jpg"
+  const image = article.image || "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

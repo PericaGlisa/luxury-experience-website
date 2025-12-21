@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr"
     ? "Politika privatnosti Maestrale Luxury Experience. Saznajte kako štitimo i koristimo vaše podatke."
     : "Privacy Policy of Maestrale Luxury Experience. Learn how we protect and use your data."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,

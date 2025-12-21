@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const description = language === "sr"
     ? "Uslovi korišćenja Maestrale Luxury Experience usluga. Informacije o pravima i obavezama korisnika."
     : "Terms of Service for Maestrale Luxury Experience services. Information about user rights and obligations."
-  const image = "/og-image.jpg"
+  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
 
   return {
     title,
