@@ -5,7 +5,7 @@ import Link from "next/link"
 import { MapPin, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
-const destinations = [
+export const destinations = [
   {
     id: "1",
     slug: { en: "porto-cervo", sr: "porto-cervo" },

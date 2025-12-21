@@ -6,7 +6,7 @@ import { ArrowUpRight, Clock, Users, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
-const experiences = [
+export const experiences = [
   {
     id: 1,
     slug: { en: "private-yacht-charter", sr: "privatni-carter-jahti" },

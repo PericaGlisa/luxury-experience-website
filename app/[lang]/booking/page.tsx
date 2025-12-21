@@ -5,6 +5,16 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
 import { Calendar, Clock, ShieldCheck, Sparkles } from "lucide-react"
+import type { Metadata } from "next"
+import { translations } from "@/lib/language-context"
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  return {
+    title: translations[language].bookingTitle,
+  }
+}
 
 declare global {
   interface Window {

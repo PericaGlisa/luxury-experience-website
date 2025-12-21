@@ -6,7 +6,7 @@ import { ArrowUpRight, MapPin, Star, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
-const hotels = [
+export const hotels = [
   {
     id: "1",
     name: "Costa Smeralda Resort",

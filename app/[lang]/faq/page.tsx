@@ -1,9 +1,19 @@
 import { Header } from "@/components/header"
-import { FaqContent } from "@/components/faq-content"
-import { NewsletterSection } from "@/components/newsletter-section"
 import { Footer } from "@/components/footer"
+import { NewsletterSection } from "@/components/newsletter-section"
+import { FAQContent } from "@/components/faq-content"
+import type { Metadata } from "next"
+import { translations } from "@/lib/language-context"
 
-export default function FaqPage() {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  return {
+    title: translations[language].faqTitle,
+  }
+}
+
+export default function FAQPage() {
   return (
     <main className="min-h-screen bg-[#FFFEF9]">
       <Header />

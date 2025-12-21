@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation"
 
 type Language = "en" | "sr"
 
-const translations = {
+export const translations = {
   en: {
     // Header
     bookNow: "Plan Your Sardinia Journey",
@@ -64,6 +64,21 @@ const translations = {
     notFoundDescription: "The page you are looking for has sailed away or doesn't exist. Let us guide you back to the shores of Costa Smeralda.",
     backToHome: "Return to Home",
     errorLabel: "Error",
+    // SEO
+    siteName: "Maestrale Luxury Experience",
+    siteDescription: "Bespoke luxury travel experiences in Sardinia. From private villas and yachts to exclusive tours.",
+    homeTitle: "Bespoke Sardinia Journeys | Maestrale Luxury Experience",
+    destinationsTitle: "Exclusive Destinations in Sardinia | Maestrale Luxury",
+    experiencesTitle: "Unique Sardinia Experiences | Maestrale Luxury",
+    yachtsTitle: "Luxury Yacht Charters Sardinia | Maestrale Luxury",
+    journalTitle: "Maestrale Journal | Sardinia Travel Inspiration",
+    contactTitle: "Contact Us | Maestrale Luxury Experience",
+    bookingTitle: "Book Your Journey | Maestrale Luxury Experience",
+    faqTitle: "Frequently Asked Questions | Maestrale Luxury",
+    privacyTitle: "Privacy Policy | Maestrale Luxury Experience",
+    termsTitle: "Terms of Service | Maestrale Luxury Experience",
+    cancellationTitle: "Cancellation Policy | Maestrale Luxury",
+    insuranceTitle: "Travel Insurance | Maestrale Luxury Experience",
   },
   sr: {
     // Header
@@ -123,6 +138,21 @@ const translations = {
     notFoundDescription: "Stranica koju tražite je otplovila ili ne postoji. Dopustite nam da vas vratimo na obale Kosta Smeralde.",
     backToHome: "Povratak na početnu",
     errorLabel: "Greška",
+    // SEO
+    siteName: "Maestrale Luxury Experience",
+    siteDescription: "Personalizovana luksuzna putovanja na Sardiniju. Od privatnih vila i jahti do ekskluzivnih tura.",
+    homeTitle: "Personalizovana putovanja na Sardiniju | Maestrale Luxury Experience",
+    destinationsTitle: "Ekskluzivne destinacije na Sardiniji | Maestrale Luxury",
+    experiencesTitle: "Jedinstvena iskustva na Sardiniji | Maestrale Luxury",
+    yachtsTitle: "Čarter luksuznih jahti Sardinija | Maestrale Luxury",
+    journalTitle: "Maestrale žurnal | Inspiracija za putovanja na Sardiniju",
+    contactTitle: "Kontaktirajte nas | Maestrale Luxury Experience",
+    bookingTitle: "Rezervišite svoje putovanje | Maestrale Luxury Experience",
+    faqTitle: "Česta pitanja | Maestrale Luxury",
+    privacyTitle: "Politika privatnosti | Maestrale Luxury Experience",
+    termsTitle: "Uslovi korišćenja | Maestrale Luxury Experience",
+    cancellationTitle: "Politika otkazivanja | Maestrale Luxury",
+    insuranceTitle: "Putno osiguranje | Maestrale Luxury Experience",
   },
 }
 

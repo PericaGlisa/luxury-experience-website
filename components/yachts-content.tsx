@@ -6,7 +6,7 @@ import { Anchor, Users, Ruler, Star, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
-const yachts = [
+export const yachts = [
   {
     id: "1",
     slug: { en: "azzurra", sr: "azura" },

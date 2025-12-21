@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Cormorant_Garamond, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { LanguageProvider } from "@/lib/language-context"
+import { LanguageProvider, translations } from "@/lib/language-context"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { WhatsAppWidget } from "@/components/whatsapp-widget"
 import "../globals.css"
@@ -25,14 +25,17 @@ const montserrat = Montserrat({
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
-  const isEn = lang === "en"
+  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  const t = translations[language]
+  const isEn = language === "en"
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://maestralelux.com"),
-    title: isEn ? "Maestrale | Luxury Sardinia Travel & Experiences" : "Maestrale | Luksuzna putovanja na Sardiniju",
-    description: isEn
-      ? "Maestrale creates bespoke luxury journeys to Sardinia for guests from the Balkans, featuring private villas, yachts, hidden gems, and personalized itineraries."
-      : "Maestrale kreira luksuzna putovanja na Sardiniju za goste iz Srbije, regiona ExYu i celog Balkana, sa privatnim vilama, jahtama, skrivenim mestima i personalizovanim itinererima.",
+    title: {
+      template: `%s | ${t.siteName}`,
+      default: t.homeTitle,
+    },
+    description: t.siteDescription,
     keywords: [
       "Sardinia luxury travel",
       "Sardinia private villas",
@@ -52,14 +55,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       "tailor made Sardinia journeys",
     ],
     openGraph: {
-      title: isEn ? "Maestrale | Luxury Sardinia Travel" : "Maestrale | Luksuzna putovanja na Sardiniju",
-      description: isEn
-        ? "Bespoke luxury journeys to Sardinia for guests from the Balkans, with villas, hotels, yachts, and tailored experiences."
-        : "Diskretan partner za organizaciju luksuznih putovanja na Sardiniju za goste iz Srbije, regiona i Balkana, sa vilama, hotelima, jahtama i iskustvima krojenim po meri.",
-      url: `/${lang}`,
-      siteName: "Maestrale Luxury Experience",
-      locale: isEn ? "en_US" : "sr_RS",
-      alternateLocale: isEn ? ["sr_RS"] : ["en_US"],
+      title: t.homeTitle,
+      description: t.siteDescription,
+      url: `/${language}`,
+      siteName: t.siteName,
+      locale: language === "en" ? "en_US" : "sr_RS",
+      alternateLocale: language === "en" ? ["sr_RS"] : ["en_US"],
       type: "website",
       images: [
         {
@@ -72,10 +73,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     twitter: {
       card: "summary_large_image",
-      title: isEn ? "Maestrale | Luxury Sardinia Travel" : "Maestrale | Luksuzna putovanja na Sardiniju",
-      description: isEn
-        ? "Tailor made Sardinia journeys for guests from Serbia, ExYu and the Balkans, with villas, yachts and curated experiences."
-        : "Personalizovana luksuzna putovanja na Sardiniju za goste sa Balkana, sa vilama, jahtama i kustoski odabranim iskustvima.",
+      title: t.homeTitle,
+      description: t.siteDescription,
       images: ["/luxury-sardinian-villa-with-pool-overlooking-medit.jpg"],
     },
     robots: {
@@ -83,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       follow: true,
     },
     alternates: {
-      canonical: `/${lang}`,
+      canonical: `/${language}`,
       languages: {
         en: "/en",
         sr: "/sr",
