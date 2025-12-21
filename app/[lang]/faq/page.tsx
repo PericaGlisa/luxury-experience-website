@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { NewsletterSection } from "@/components/newsletter-section"
-import { FAQContent } from "@/components/faq-content"
+import { FaqContent } from "@/components/faq-content"
 import type { Metadata } from "next"
 import { translations } from "@/lib/translations"
 
