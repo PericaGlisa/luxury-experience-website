@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { useLanguage } from "@/lib/language-context"
 import { Calendar, Clock, ShieldCheck, Sparkles } from "lucide-react"
 import type { Metadata } from "next"
-import { translations } from "@/lib/language-context"
+import { translations } from "@/lib/translations"
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params

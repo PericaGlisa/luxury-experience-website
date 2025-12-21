@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { ExperiencesContent } from "@/components/experiences-content"
 import type { Metadata } from "next"
-import { translations } from "@/lib/language-context"
+import { translations } from "@/lib/translations"
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
