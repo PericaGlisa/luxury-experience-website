@@ -5,13 +5,14 @@ import { NewsletterSection } from "@/components/newsletter-section"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 import { translations } from "@/lib/translations"
+import { heroSlides } from "@/lib/data"
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
   const title = translations[language].homeTitle
   const description = translations[language].siteDescription
-  const image = "/porto-cervo-luxury-marina-sardinia-yachts.jpg"
+  const image = heroSlides[0].src
 
   return {
     title,
