@@ -19,98 +19,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { hotels, hotelAmenityNames } from "@/lib/data"
 import { notFound } from "next/navigation"
-
-export const hotels = [
-  {
-    id: "1",
-    name: "Costa Smeralda Resort",
-    slug: { en: "costa-smeralda-resort", sr: "costa-smeralda-rizort" },
-    location: "Porto Cervo, Sardinia",
-    rating: 4.9,
-    reviews: 3420,
-    price: 450,
-    description: {
-      en: "Experience the pinnacle of Mediterranean luxury at Costa Smeralda Resort. Nestled along the pristine coastline of Porto Cervo, this five-star sanctuary offers breathtaking views of the Tyrrhenian Sea, world-class amenities, and unparalleled service. Each suite is meticulously designed to blend contemporary elegance with traditional Sardinian charm.",
-      sr: "Doživite vrhunac mediteranskog luksuza u Costa Smeralda Resortu. Smešten duž netaknute obale Porto Cerva, ovo petzvezdično utočište nudi prelepe poglede na Tirensko more, svetske pogodnosti i nenadmašnu uslugu. Svaki apartman je pažljivo dizajniran da spoji savremenu eleganciju sa tradicionalnim sardinijskim šarmom.",
-    },
-    images: [
-      "/luxury-resort-costa-smeralda-sardinia-infinity-pool.jpg",
-      "/luxury-mediterranean-villa-private-beach-sardinia.jpg",
-      "/luxury-sardinian-villa-with-pool-overlooking-medit.jpg",
-    ],
-    amenities: ["wifi", "parking", "restaurant", "pool", "gym", "bar"],
-    rooms: 120,
-    checkIn: "15:00",
-    checkOut: "11:00",
-  },
-  {
-    id: "2",
-    name: "Skyview Retreat",
-    slug: { en: "skyview-retreat", sr: "skyview-utociste" },
-    location: "La Maddalena, Sardinia",
-    rating: 4.8,
-    reviews: 2345,
-    price: 320,
-    description: {
-      en: "Escape to Skyview Retreat, where overwater bungalows meet the crystal-clear waters of La Maddalena archipelago. This exclusive retreat offers a unique blend of Polynesian-inspired architecture and Mediterranean hospitality. Wake up to panoramic ocean views and fall asleep to the gentle sound of waves.",
-      sr: "Pobeznite u Skyview Retreat, gde se bungalovi nad vodom susreću sa kristalno čistim vodama arhipelaga La Maddalena. Ovo ekskluzivno utočište nudi jedinstvenu mešavinu polinezijski inspirisane arhitekture i mediteranskog gostoprimstva. Probudite se uz panoramske poglede na okean i zaspite uz nežni zvuk talasa.",
-    },
-    images: [
-      "/overwater-bungalows-tropical-resort-sunset-mediter.jpg",
-      "/luxury-resort-costa-smeralda-sardinia-infinity-pool.jpg",
-      "/luxury-mediterranean-villa-private-beach-sardinia.jpg",
-    ],
-    amenities: ["wifi", "restaurant", "pool", "bar"],
-    rooms: 45,
-    checkIn: "14:00",
-    checkOut: "12:00",
-  },
-  {
-    id: "3",
-    name: "Villa Mediterranea",
-    slug: { en: "villa-mediterranea", sr: "vila-mediteranea" },
-    location: "Cala di Volpe, Sardinia",
-    rating: 4.7,
-    reviews: 1890,
-    price: 580,
-    description: {
-      en: "Villa Mediterranea represents the essence of private luxury living on the Costa Smeralda. This exclusive villa hotel offers just 24 suites, each with private terraces overlooking the legendary Cala di Volpe bay. Enjoy personalized butler service, a private beach club, and gourmet dining under the stars.",
-      sr: "Villa Mediterranea predstavlja suštinu privatnog luksuznog života na Costa Smeraldi. Ovaj ekskluzivni hotel sa vilama nudi samo 24 apartmana, svaki sa privatnim terasama sa pogledom na legendarni zaliv Cala di Volpe. Uživajte u personalizovanoj batler usluzi, privatnom plažnom klubu i gurmanskom obroku pod zvezdama.",
-    },
-    images: [
-      "/luxury-mediterranean-villa-private-beach-sardinia.jpg",
-      "/luxury-sardinian-villa-with-pool-overlooking-medit.jpg",
-      "/boutique-hotel-turquoise-bay-sardinia-coastline.jpg",
-    ],
-    amenities: ["wifi", "parking", "restaurant", "pool", "gym", "bar"],
-    rooms: 24,
-    checkIn: "15:00",
-    checkOut: "11:00",
-  },
-  {
-    id: "4",
-    name: "Emerald Bay Hotel",
-    slug: { en: "emerald-bay-hotel", sr: "hotel-emerald-bay" },
-    location: "Porto Rotondo, Sardinia",
-    rating: 4.8,
-    reviews: 2156,
-    price: 395,
-    description: {
-      en: "Emerald Bay Hotel is a boutique gem tucked away in the charming village of Porto Rotondo. With its distinctive architecture inspired by local traditions and stunning views of the emerald bay, this hotel offers an intimate atmosphere for discerning travelers seeking authentic Sardinian luxury.",
-      sr: "Emerald Bay Hotel je butik dragulj skriven u šarmantnom selu Porto Rotondo. Sa svojom prepoznatljivom arhitekturom inspirisanom lokalnim tradicijama i zadivljujućim pogledom na smaragdni zaliv, ovaj hotel nudi intimnu atmosferu za zahtevne putnike koji traže autentičan sardinijski luksuz.",
-    },
-    images: [
-      "/boutique-hotel-turquoise-bay-sardinia-coastline.jpg",
-      "/porto-rotondo-sardinia-village-marina-sunset.jpg",
-      "/luxury-golf-course-sardinia-mediterranean-spa.jpg",
-    ],
-    amenities: ["wifi", "parking", "restaurant", "pool", "gym", "bar"],
-    rooms: 68,
-    checkIn: "14:00",
-    checkOut: "11:00",
-  },
-]
 
 const amenityIcons: Record<string, React.ReactNode> = {
   wifi: <Wifi className="w-5 h-5" />,
@@ -119,15 +29,6 @@ const amenityIcons: Record<string, React.ReactNode> = {
   pool: <Waves className="w-5 h-5" />,
   gym: <Dumbbell className="w-5 h-5" />,
   bar: <Wine className="w-5 h-5" />,
-}
-
-const amenityNames: Record<string, { en: string; sr: string }> = {
-  wifi: { en: "Free WiFi", sr: "Besplatan WiFi" },
-  parking: { en: "Parking", sr: "Parking" },
-  restaurant: { en: "Restaurant", sr: "Restoran" },
-  pool: { en: "Pool", sr: "Bazen" },
-  gym: { en: "Fitness Center", sr: "Fitnes centar" },
-  bar: { en: "Bar & Lounge", sr: "Bar i salon" },
 }
 
 export function HotelDetail({ id }: { id: string }) {
@@ -200,10 +101,12 @@ export function HotelDetail({ id }: { id: string }) {
             {/* Amenities */}
             <h3 className="font-serif text-xl text-[#1B4B5A] mb-4">{language === "sr" ? "Pogodnosti" : "Amenities"}</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-              {hotel.amenities.map((amenity) => (
+              {hotel.amenities?.map((amenity) => (
                 <div key={amenity} className="flex items-center gap-3 p-4 bg-[#F7F4EE] rounded-xl">
                   <div className="text-[#C9A962]">{amenityIcons[amenity]}</div>
-                  <span className="text-[#1B4B5A] text-sm">{amenityNames[amenity][language as "en" | "sr"]}</span>
+                  <span className="text-[#1B4B5A] text-sm">
+                    {hotelAmenityNames[amenity]?.[language as "en" | "sr"] || amenity}
+                  </span>
                 </div>
               ))}
             </div>

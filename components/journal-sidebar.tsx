@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Search, ChevronRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
-import { journalArticles } from "@/components/journal-content"
+import { journalArticles } from "@/lib/data"
 
 export function JournalSidebar() {
   const { language, t, getUrl } = useLanguage()

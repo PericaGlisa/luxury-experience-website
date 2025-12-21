@@ -5,74 +5,7 @@ import Link from "next/link"
 import { MapPin, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
-export const destinations = [
-  {
-    id: "1",
-    slug: { en: "porto-cervo", sr: "porto-cervo" },
-    name: "Porto Cervo",
-    description: {
-      en: "The glamorous heart of Costa Smeralda, known for luxury boutiques and celebrity sightings.",
-      sr: "Glamurozno srce Costa Smeralde, poznato po luksuznim buticima i poznatim ličnostima.",
-    },
-    properties: 45,
-    image: "/porto-cervo-luxury-marina-sardinia-yachts.jpg",
-  },
-  {
-    id: "2",
-    slug: { en: "la-maddalena", sr: "la-madalena" },
-    name: "La Maddalena",
-    description: {
-      en: "An archipelago of pristine islands with crystal-clear waters and untouched beaches.",
-      sr: "Arhipelag netaknutih ostrva sa kristalno čistim vodama i netaknutim plažama.",
-    },
-    properties: 28,
-    image: "/la-maddalena-islands-sardinia-turquoise-water.jpg",
-  },
-  {
-    id: "3",
-    slug: { en: "cala-di-volpe", sr: "kala-di-volpe" },
-    name: "Cala di Volpe",
-    description: {
-      en: "Home to the iconic Hotel Cala di Volpe and some of the most exclusive resorts.",
-      sr: "Dom legendarnog hotela Cala di Volpe i nekih od najekskluzivnijih rizorta.",
-    },
-    properties: 32,
-    image: "/cala-di-volpe-bay-sardinia-luxury-resort.jpg",
-  },
-  {
-    id: "4",
-    slug: { en: "porto-rotondo", sr: "porto-rotondo" },
-    name: "Porto Rotondo",
-    description: {
-      en: "A charming village with traditional architecture and world-class golf courses.",
-      sr: "Šarmantno selo sa tradicionalnom arhitekturom i golf terenima svetske klase.",
-    },
-    properties: 38,
-    image: "/porto-rotondo-sardinia-village-marina-sunset.jpg",
-  },
-  {
-    id: "5",
-    slug: { en: "poltu-quatu", sr: "poltu-kvatu" },
-    name: "Poltu Quatu",
-    description: {
-      en: "A hidden fjord transformed into an exclusive marina village.",
-      sr: "Skriveni fjord pretvoren u ekskluzivno marinsko selo.",
-    },
-    properties: 22,
-    image: "/poltu-quatu-sardinia-hidden-marina-luxury.jpg",
-  },
-  {
-    id: "6",
-    slug: { en: "san-pantaleo", sr: "san-pantaleo" },
-    name: "San Pantaleo",
-    description: {
-      en: "A bohemian village nestled in the mountains with artisan markets and local charm.",
-      sr: "Boemsko selo u planinama sa zanatskim pijacama i lokalnim šarmom.",
-    },
-    properties: 18,
-    image: "/san-pantaleo-sardinia-mountain-village-authentic.jpg",
-  },
-]
+import { destinations } from "@/lib/data"
 
 export function DestinationsContent() {
   const { language, getUrl } = useLanguage()

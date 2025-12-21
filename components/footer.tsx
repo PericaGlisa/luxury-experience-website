@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Instagram, Facebook, Linkedin, Phone, Mail, MapPin, Heart } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import { contactInfoData } from "@/lib/data"
 
 export function Footer() {
   const { language, t, getUrl } = useLanguage()
@@ -106,18 +107,18 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#C9A962] mt-0.5" />
-                <span className="text-sm text-[#FFFEF9]/70">Belgrade, Serbia</span>
+                <span className="text-sm text-[#FFFEF9]/70">{contactInfoData.address}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#C9A962]" />
-                <a href="tel:+381653198728" className="text-sm text-[#FFFEF9]/70">
-                  +381 65 319 87 28
+                <a href={contactInfoData.phoneHref} className="text-sm text-[#FFFEF9]/70">
+                  {contactInfoData.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#C9A962]" />
-                <a href="mailto:info@maestralelux.com" className="text-sm text-[#FFFEF9]/70">
-                  info@maestralelux.com
+                <a href={contactInfoData.emailHref} className="text-sm text-[#FFFEF9]/70">
+                  {contactInfoData.email}
                 </a>
               </li>
             </ul>

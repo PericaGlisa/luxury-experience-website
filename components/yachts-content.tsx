@@ -6,56 +6,7 @@ import { Anchor, Users, Ruler, Star, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 
-export const yachts = [
-  {
-    id: "1",
-    slug: { en: "azzurra", sr: "azura" },
-    name: "Azzurra",
-    type: { en: "Motor Yacht", sr: "Motorna jahta" },
-    length: "32m",
-    guests: 10,
-    crew: 5,
-    rating: 4.9,
-    pricePerDay: 8500,
-    image: "/luxury-motor-yacht-mediterranean-blue-water.jpg",
-  },
-  {
-    id: "2",
-    slug: { en: "vento-di-mare", sr: "morski-vetar" },
-    name: "Vento di Mare",
-    type: { en: "Sailing Yacht", sr: "Jedrilica" },
-    length: "24m",
-    guests: 8,
-    crew: 3,
-    rating: 4.8,
-    pricePerDay: 4200,
-    image: "/luxury-sailing-yacht-sardinia-sunset-sails.jpg",
-  },
-  {
-    id: "3",
-    slug: { en: "costa-bella", sr: "lepa-obala" },
-    name: "Costa Bella",
-    type: { en: "Catamaran", sr: "Katamaran" },
-    length: "18m",
-    guests: 12,
-    crew: 3,
-    rating: 4.7,
-    pricePerDay: 3800,
-    image: "/luxury-catamaran-turquoise-water-mediterranean.jpg",
-  },
-  {
-    id: "4",
-    slug: { en: "mare-nostrum", sr: "nase-more" },
-    name: "Mare Nostrum",
-    type: { en: "Mega Yacht", sr: "Mega jahta" },
-    length: "52m",
-    guests: 14,
-    crew: 12,
-    rating: 5.0,
-    pricePerDay: 25000,
-    image: "/luxury-mega-yacht-aerial-view-mediterranean-sea.jpg",
-  },
-]
+import { yachts } from "@/lib/data"
 
 export function YachtsContent() {
   const { language, getUrl } = useLanguage()

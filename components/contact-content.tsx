@@ -6,6 +6,7 @@ import { useState } from "react"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
+import { contactInfoData } from "@/lib/data"
 
 export function ContactContent() {
   const { language } = useLanguage()
@@ -56,24 +57,24 @@ export function ContactContent() {
     {
       icon: MapPin,
       title: language === "sr" ? "Adresa" : "Address",
-      content: "Belgrade, Serbia",
+      content: contactInfoData.address,
     },
     {
       icon: Phone,
       title: language === "sr" ? "Telefon" : "Phone",
-      content: "+381 65 319 87 28",
-      href: "tel:+381653198728",
+      content: contactInfoData.phone,
+      href: contactInfoData.phoneHref,
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@maestralelux.com",
-      href: "mailto:info@maestralelux.com",
+      content: contactInfoData.email,
+      href: contactInfoData.emailHref,
     },
     {
       icon: Clock,
       title: language === "sr" ? "Radno vreme" : "Working Hours",
-      content: language === "sr" ? "Pon - Pet: 9:00 - 18:00" : "Mon - Fri: 9:00 AM - 6:00 PM",
+      content: contactInfoData.workingHours[language as "en" | "sr"],
     },
   ]
 

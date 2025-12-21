@@ -8,6 +8,7 @@ import { ArrowUpRight, User, Mail, Phone, Calendar, Clock, MessageSquare, Send }
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel"
+import { heroSlides, consultationDestinations, consultationTimeOptions } from "@/lib/data"
 
 export function HeroSection() {
   const { t, language, getUrl } = useLanguage()
@@ -65,36 +66,20 @@ export function HeroSection() {
 
   const destinations = [
     { value: "", label: language === "sr" ? "Izaberite opciju" : "Select an option" },
-    { value: "experiences", label: language === "sr" ? "Iskustva" : "Experiences" },
-    { value: "destinations", label: language === "sr" ? "Destinacije" : "Destinations" },
-    { value: "yacht-charters", label: language === "sr" ? "Čarter jahte" : "Yacht Charters" },
+    ...consultationDestinations.map((d) => ({
+      value: d.value,
+      label: d.label[language as "en" | "sr"],
+    })),
   ]
 
   const timeOptions = [
     { value: "", label: language === "sr" ? "Okvirno vreme" : "Preferred time" },
-    { value: "morning", label: language === "sr" ? "Prepodne" : "Morning" },
-    { value: "afternoon", label: language === "sr" ? "Popodne" : "Afternoon" },
-    { value: "evening", label: language === "sr" ? "Veče" : "Evening" },
+    ...consultationTimeOptions.map((t) => ({
+      value: t.value,
+      label: t.label[language as "en" | "sr"],
+    })),
   ]
 
-  const heroSlides = [
-    {
-      src: "/luxury-sardinian-villa-with-pool-overlooking-medit.jpg",
-      alt: "Luxury Sardinian villa with pool overlooking the Mediterranean",
-    },
-    {
-      src: "/cala-di-volpe-bay-sardinia-luxury-resort.jpg",
-      alt: "Cala di Volpe bay luxury resort in Sardinia",
-    },
-    {
-      src: "/porto-cervo-luxury-marina-sardinia-yachts.jpg",
-      alt: "Porto Cervo luxury marina in Sardinia",
-    },
-    {
-      src: "/la-maddalena-islands-sardinia-turquoise-water.jpg",
-      alt: "La Maddalena islands with turquoise water in Sardinia",
-    },
-  ]
 
   useEffect(() => {
     if (!carouselApi) return

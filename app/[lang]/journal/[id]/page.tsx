@@ -3,15 +3,14 @@ import { Header } from "@/components/header"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
-import { journalArticles } from "@/components/journal-content"
+import { journalArticles } from "@/lib/data"
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string, lang: string }> }): Promise<Metadata> {
   const { id, lang } = await params
+  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
   const article = journalArticles.find((a) => a.slug.en === id || a.slug.sr === id)
   
   if (!article) return { title: "Article Not Found" }
-
-  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
 
   return {
     title: article.title[language],
@@ -19,8 +18,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
+export default async function ArticlePage({ params }: { params: Promise<{ id: string, lang: string }> }) {
+  const { id, lang } = await params
+  const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
 
   return (
     <main>

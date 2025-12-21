@@ -5,49 +5,7 @@ import Link from "next/link"
 import { ArrowUpRight, MapPin, Star, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/language-context"
-
-export const hotels = [
-  {
-    id: "1",
-    name: "Costa Smeralda Resort",
-    slug: { en: "costa-smeralda-resort", sr: "costa-smeralda-rizort" },
-    location: "Porto Cervo, Sardinia",
-    rating: 4.9,
-    reviews: 3420,
-    price: 450,
-    image: "/luxury-resort-costa-smeralda-sardinia-infinity-pool.jpg",
-  },
-  {
-    id: "2",
-    name: "Skyview Retreat",
-    slug: { en: "skyview-retreat", sr: "skyview-utociste" },
-    location: "La Maddalena, Sardinia",
-    rating: 4.8,
-    reviews: 2345,
-    price: 320,
-    image: "/overwater-bungalows-tropical-resort-sunset-mediter.jpg",
-  },
-  {
-    id: "3",
-    name: "Villa Mediterranea",
-    slug: { en: "villa-mediterranea", sr: "vila-mediteranea" },
-    location: "Cala di Volpe, Sardinia",
-    rating: 4.7,
-    reviews: 1890,
-    price: 580,
-    image: "/luxury-mediterranean-villa-private-beach-sardinia.jpg",
-  },
-  {
-    id: "4",
-    name: "Emerald Bay Hotel",
-    slug: { en: "emerald-bay-hotel", sr: "hotel-emerald-bay" },
-    location: "Porto Rotondo, Sardinia",
-    rating: 4.8,
-    reviews: 2156,
-    price: 395,
-    image: "/boutique-hotel-turquoise-bay-sardinia-coastline.jpg",
-  },
-]
+import { hotels } from "@/lib/data"
 
 export function TopRatedHotels() {
   const { language, t, getUrl } = useLanguage()
@@ -97,9 +55,10 @@ export function TopRatedHotels() {
               <div className="group relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow cursor-pointer">
                 <div className="relative h-64 overflow-hidden">
                   <Image
-                    src={hotel.image || "/placeholder.svg"}
+                    src={hotel.images?.[0] || "/placeholder.svg"}
                     alt={hotel.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Gradient Overlay */}

@@ -3,7 +3,7 @@ import { Header } from "@/components/header"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
-import { destinations } from "@/components/destinations-content"
+import { destinations } from "@/lib/data"
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string, lang: string }> }): Promise<Metadata> {
   const { id, lang } = await params
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 }
 
-export default async function DestinationPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function DestinationPage({ params }: { params: Promise<{ id: string, lang: string }> }) {
   const { id } = await params
 
   return (
