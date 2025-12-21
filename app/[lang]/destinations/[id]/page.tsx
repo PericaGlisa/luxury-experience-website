@@ -12,10 +12,32 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!destination) return { title: "Destination Not Found" }
 
   const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  const title = `${destination.name} | Luxury Destinations`
+  const description = destination.description[language]
+  const image = destination.image || "/og-image.jpg"
 
   return {
-    title: destination.name,
-    description: destination.description[language],
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: destination.name,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   }
 }
 

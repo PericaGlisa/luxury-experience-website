@@ -12,10 +12,34 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!yacht) return { title: "Yacht Not Found" }
 
   const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  const title = `${yacht.name} | Luxury Yacht Charter`
+  const description = language === "sr" 
+    ? `Doživite Mediteran na jahti ${yacht.name}, dužine ${yacht.length}. Rezervišite svoj ekskluzivni čarter na Sardiniji sa Maestrale.`
+    : `Experience the Mediterranean aboard ${yacht.name}, a ${yacht.length} luxury yacht. Book your exclusive Sardinia yacht charter with Maestrale.`
+  const image = yacht.image || yacht.images?.[0] || "/og-image.jpg"
 
   return {
-    title: `${yacht.name} | Luxury Yacht Charter`,
-    description: `Experience the Mediterranean aboard ${yacht.name}, a ${yacht.length} ${yacht.type[language]}. Book your exclusive Sardinia yacht charter with Maestrale.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: yacht.name,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   }
 }
 

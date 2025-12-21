@@ -12,10 +12,32 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!experience) return { title: "Experience Not Found" }
 
   const language = (lang === "en" || lang === "sr" ? lang : "sr") as "en" | "sr"
+  const title = `${experience.title[language]} | Maestrale Experiences`
+  const description = experience.description[language]
+  const image = experience.image || "/og-image.jpg"
 
   return {
-    title: experience.title[language],
-    description: experience.description[language],
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: experience.title[language],
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   }
 }
 

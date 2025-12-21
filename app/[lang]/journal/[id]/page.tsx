@@ -12,9 +12,32 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   
   if (!article) return { title: "Article Not Found" }
 
+  const title = `${article.title[language]} | Maestrale Journal`
+  const description = article.excerpt[language]
+  const image = article.image || "/og-image.jpg"
+
   return {
-    title: article.title[language],
-    description: article.excerpt[language],
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: article.title[language],
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   }
 }
 
