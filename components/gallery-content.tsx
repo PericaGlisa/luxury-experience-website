@@ -59,7 +59,7 @@ export function GalleryContent() {
                 src="/logo.png"
                 alt="Logo"
                 fill
-                className="object-contain p-4"
+                className="object-contain p-1"
               />
             </div>
           </div>
@@ -158,9 +158,9 @@ export function GalleryContent() {
             <X className="w-8 h-8" />
           </button>
 
-          <div className="relative flex flex-col md:flex-row bg-white max-w-7xl w-full max-h-[90vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl">
+          <div className="relative flex flex-col md:flex-row bg-white w-full max-w-[95vw] h-full max-h-[95vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl">
             {/* Image Section */}
-            <div className="relative flex-1 bg-black flex items-center justify-center group/img overflow-hidden">
+            <div className="relative flex-[3] bg-black flex items-center justify-center group/img overflow-hidden">
               <Image
                 src={galleryImages[selectedImageIdx].src}
                 alt={galleryImages[selectedImageIdx].alt}
@@ -192,11 +192,11 @@ export function GalleryContent() {
             </div>
 
             {/* Sidebar Section (Instagram Info Style) */}
-            <div className="w-full md:w-80 lg:w-96 bg-white flex flex-col border-l border-gray-100">
+            <div className="w-full md:w-80 bg-white flex flex-col border-l border-gray-100 shrink-0">
               {/* User Header */}
               <div className="p-4 flex items-center gap-3 border-b border-gray-50">
-                <div className="w-8 h-8 rounded-full bg-white overflow-hidden relative border border-gray-100">
-                  <Image src="/logo.png" alt="User" fill className="object-contain p-1" />
+                <div className="w-10 h-10 rounded-full bg-white overflow-hidden relative border border-gray-100">
+                  <Image src="/logo.png" alt="User" fill className="object-contain" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
@@ -207,8 +207,8 @@ export function GalleryContent() {
               {/* Caption/Comments Area */}
               <div className="flex-1 p-4 overflow-y-auto">
                 <div className="flex gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100">
-                    <Image src="/logo.png" alt="User" fill className="object-contain p-1" />
+                  <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100">
+                    <Image src="/logo.png" alt="User" fill className="object-contain" />
                   </div>
                   <div className="text-sm">
                     <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
