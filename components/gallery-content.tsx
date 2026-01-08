@@ -54,12 +54,12 @@ export function GalleryContent() {
         {/* Instagram Profile Style Header */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 mb-16 px-4">
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 border-2 border-[#C9A962]">
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-[#F7F4EE]">
+            <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
               <Image
-                src="/images/gallery/sardinia-1.jpg" // Using first image as "profile"
-                alt="Profile"
+                src="/logo.png"
+                alt="Logo"
                 fill
-                className="object-cover"
+                className="object-contain p-4"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export function GalleryContent() {
             <div
               key={image.id}
               className={cn(
-                "group relative aspect-square overflow-hidden bg-gray-100 cursor-pointer",
+                "group relative aspect-square overflow-hidden bg-gray-100 cursor-pointer rounded-2xl md:rounded-3xl",
                 "animate-in fade-in duration-700 fill-mode-both"
               )}
               style={{ animationDelay: `${index * 30}ms` }}
@@ -158,7 +158,7 @@ export function GalleryContent() {
             <X className="w-8 h-8" />
           </button>
 
-          <div className="relative flex flex-col md:flex-row bg-white max-w-6xl w-full max-h-[90vh] overflow-hidden rounded-sm">
+          <div className="relative flex flex-col md:flex-row bg-white max-w-7xl w-full max-h-[90vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl">
             {/* Image Section */}
             <div className="relative flex-1 bg-black flex items-center justify-center group/img overflow-hidden">
               <Image
@@ -195,8 +195,8 @@ export function GalleryContent() {
             <div className="w-full md:w-80 lg:w-96 bg-white flex flex-col border-l border-gray-100">
               {/* User Header */}
               <div className="p-4 flex items-center gap-3 border-b border-gray-50">
-                <div className="w-8 h-8 rounded-full bg-[#F7F4EE] overflow-hidden relative">
-                  <Image src="/images/gallery/sardinia-1.jpg" alt="User" fill className="object-cover" />
+                <div className="w-8 h-8 rounded-full bg-white overflow-hidden relative border border-gray-100">
+                  <Image src="/logo.png" alt="User" fill className="object-contain p-1" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
@@ -207,8 +207,8 @@ export function GalleryContent() {
               {/* Caption/Comments Area */}
               <div className="flex-1 p-4 overflow-y-auto">
                 <div className="flex gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-full bg-[#F7F4EE] overflow-hidden flex-shrink-0 relative">
-                    <Image src="/images/gallery/sardinia-1.jpg" alt="User" fill className="object-cover" />
+                  <div className="w-8 h-8 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100">
+                    <Image src="/logo.png" alt="User" fill className="object-contain p-1" />
                   </div>
                   <div className="text-sm">
                     <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
@@ -237,9 +237,6 @@ export function GalleryContent() {
                 </div>
                 <div className="text-sm font-bold text-[#1B4B5A]">
                   {Math.floor(Math.random() * 500) + 100} {t("likes")}
-                </div>
-                <div className="text-[10px] text-[#5A6B70]/60 uppercase tracking-wider">
-                  8. JANUAR 2026.
                 </div>
               </div>
             </div>
