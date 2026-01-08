@@ -59,7 +59,7 @@ export function GalleryContent() {
                 src="/logo.png"
                 alt="Logo"
                 fill
-                className="object-contain scale-[1.4] translate-y-1 transform-gpu"
+                className="object-contain scale-[1.4] translate-y-2 transform-gpu"
                 priority
               />
             </div>
@@ -205,7 +205,7 @@ export function GalleryContent() {
               {/* User Header */}
               <div className="p-4 flex items-center gap-3 border-b border-gray-50">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden relative border border-gray-100 flex items-center justify-center">
-                  <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-0.5 transform-gpu" />
+                  <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-1 transform-gpu" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
@@ -217,7 +217,7 @@ export function GalleryContent() {
               <div className="flex-1 p-4 overflow-y-auto">
                 <div className="flex gap-3 mb-6">
                   <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100 flex items-center justify-center">
-                    <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-0.5 transform-gpu" />
+                    <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-1 transform-gpu" />
                   </div>
                   <div className="text-sm">
                     <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
