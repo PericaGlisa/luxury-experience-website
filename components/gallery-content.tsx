@@ -54,13 +54,16 @@ export function GalleryContent() {
         {/* Instagram Profile Style Header */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 mb-16 px-4">
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 border-2 border-[#C9A962]">
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                fill
-                className="object-contain scale-125"
-              />
+            <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
+              <div className="relative w-[125%] h-[125%]">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  fill
+                  className="object-contain object-center"
+                  priority
+                />
+              </div>
             </div>
           </div>
           
@@ -203,8 +206,10 @@ export function GalleryContent() {
             <div className="w-full md:w-80 bg-white flex flex-col border-l border-gray-100 shrink-0">
               {/* User Header */}
               <div className="p-4 flex items-center gap-3 border-b border-gray-50">
-                <div className="w-10 h-10 rounded-full bg-white overflow-hidden relative border border-gray-100">
-                  <Image src="/logo.png" alt="User" fill className="object-contain scale-125" />
+                <div className="w-10 h-10 rounded-full bg-white overflow-hidden relative border border-gray-100 flex items-center justify-center">
+                  <div className="relative w-[125%] h-[125%]">
+                    <Image src="/logo.png" alt="User" fill className="object-contain object-center" />
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
@@ -215,8 +220,10 @@ export function GalleryContent() {
               {/* Caption/Comments Area */}
               <div className="flex-1 p-4 overflow-y-auto">
                 <div className="flex gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100">
-                    <Image src="/logo.png" alt="User" fill className="object-contain scale-125" />
+                  <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100 flex items-center justify-center">
+                    <div className="relative w-[125%] h-[125%]">
+                      <Image src="/logo.png" alt="User" fill className="object-contain object-center" />
+                    </div>
                   </div>
                   <div className="text-sm">
                     <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
