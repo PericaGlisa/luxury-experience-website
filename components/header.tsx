@@ -13,21 +13,21 @@ import { useEffect } from "react"
 const navItems = {
   en: [
     { label: "Home", href: "/" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Experiences", href: "/experiences" },
     { label: "Destinations", href: "/destinations" },
     { label: "Yachts", href: "/yachts" },
     { label: "Journal", href: "/journal" },
     { label: "Booking", href: "/booking" },
-    { label: "Contact", href: "/contact" },
   ],
   sr: [
     { label: "Početna", href: "/" },
+    { label: "Galerija", href: "/gallery" },
     { label: "Iskustva", href: "/experiences" },
     { label: "Destinacije", href: "/destinations" },
     { label: "Jahte", href: "/yachts" },
     { label: "Žurnal", href: "/journal" },
     { label: "Zakazivanje", href: "/booking" },
-    { label: "Kontakt", href: "/contact" },
   ],
 }
 
