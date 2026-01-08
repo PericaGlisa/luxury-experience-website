@@ -121,8 +121,9 @@ export function GalleryContent() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 768px) 33vw, (max-width: 1200px) 33vw, 25vw"
+                sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
                 className="object-cover transition-all duration-500 group-hover:brightness-90"
+                loading={index < 6 ? "eager" : "lazy"}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.src = "/placeholder.svg"
@@ -174,12 +175,14 @@ export function GalleryContent() {
                 src={galleryImages[selectedImageIdx].src}
                 alt={galleryImages[selectedImageIdx].alt}
                 fill
+                sizes="(max-width: 768px) 100vw, 75vw"
                 className={cn(
                   "object-contain transition-transform duration-300",
                   isZoomed ? "scale-150 cursor-zoom-out" : "scale-100 cursor-zoom-in"
                 )}
                 onClick={() => setIsZoomed(!isZoomed)}
                 priority
+                quality={90}
               />
               
               {!isZoomed && (
