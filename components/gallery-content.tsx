@@ -59,7 +59,7 @@ export function GalleryContent() {
                 src="/logo.png"
                 alt="Logo"
                 fill
-                className="object-contain p-1"
+                className="object-contain scale-125"
               />
             </div>
           </div>
@@ -150,7 +150,12 @@ export function GalleryContent() {
 
       {/* Instagram Style Lightbox */}
       {selectedImageIdx !== null && (
-        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300 px-4 md:px-20">
+        <div 
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300 px-4 md:px-20"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeLightbox()
+          }}
+        >
           <button 
             onClick={closeLightbox}
             className="absolute top-4 right-4 p-2 text-white/70 hover:text-white z-[120]"
@@ -158,7 +163,10 @@ export function GalleryContent() {
             <X className="w-8 h-8" />
           </button>
 
-          <div className="relative flex flex-col md:flex-row bg-white w-full max-w-[95vw] h-full max-h-[95vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl">
+          <div 
+            className="relative flex flex-col md:flex-row bg-white w-full max-w-[95vw] h-full max-h-[95vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Image Section */}
             <div className="relative flex-[3] bg-black flex items-center justify-center group/img overflow-hidden">
               <Image
@@ -196,7 +204,7 @@ export function GalleryContent() {
               {/* User Header */}
               <div className="p-4 flex items-center gap-3 border-b border-gray-50">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden relative border border-gray-100">
-                  <Image src="/logo.png" alt="User" fill className="object-contain" />
+                  <Image src="/logo.png" alt="User" fill className="object-contain scale-125" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
@@ -208,7 +216,7 @@ export function GalleryContent() {
               <div className="flex-1 p-4 overflow-y-auto">
                 <div className="flex gap-3 mb-6">
                   <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex-shrink-0 relative border border-gray-100">
-                    <Image src="/logo.png" alt="User" fill className="object-contain" />
+                    <Image src="/logo.png" alt="User" fill className="object-contain scale-125" />
                   </div>
                   <div className="text-sm">
                     <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
