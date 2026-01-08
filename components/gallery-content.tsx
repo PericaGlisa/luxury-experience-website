@@ -211,7 +211,7 @@ export function GalleryContent() {
                   <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-0.5 transform-gpu" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-bold text-[#1B4B5A]">maestrale_luxury</span>
+                  <span className="text-sm font-bold text-[#1B4B5A]">Maestrale Luxury</span>
                   <span className="text-xs text-[#5A6B70]">Sardinia, Italy</span>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export function GalleryContent() {
                     <Image src="/logo.png" alt="User" fill className="object-contain scale-[1.4] translate-y-0.5 transform-gpu" />
                   </div>
                   <div className="text-sm">
-                    <span className="font-bold mr-2 text-[#1B4B5A]">maestrale_luxury</span>
+                    <span className="font-bold mr-2 text-[#1B4B5A]">Maestrale Luxury</span>
                     <span className="text-[#5A6B70] leading-relaxed">
                       {galleryImages[selectedImageIdx].alt}. {language === "sr" ? "Uživajte u svakom trenutku luksuza." : "Enjoy every moment of luxury."}
                     </span>
