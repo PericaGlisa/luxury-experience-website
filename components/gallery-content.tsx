@@ -124,6 +124,7 @@ export function GalleryContent() {
                 sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
                 className="object-cover transition-all duration-500 group-hover:brightness-90"
                 loading={index < 6 ? "eager" : "lazy"}
+                quality={75}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement
                   target.src = "/placeholder.svg"
@@ -182,7 +183,7 @@ export function GalleryContent() {
                 )}
                 onClick={() => setIsZoomed(!isZoomed)}
                 priority
-                quality={90}
+                quality={75}
               />
               
               {!isZoomed && (
