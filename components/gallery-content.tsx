@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback, memo } from "react"
 import Image from "next/image"
 import { X, Maximize2, Download, ChevronLeft, ChevronRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
@@ -14,20 +14,76 @@ const galleryImages = Array.from({ length: 38 }, (_, i) => ({
   alt: `Sardinia Experience ${i + 1}`,
 }))
 
+const GalleryItem = memo(({ 
+  image, 
+  index, 
+  onClick 
+}: { 
+  image: typeof galleryImages[0]
+  index: number
+  onClick: (index: number) => void 
+}) => {
+  return (
+    <div
+      className={cn(
+        "group relative aspect-square overflow-hidden bg-gray-100 cursor-pointer rounded-2xl md:rounded-3xl",
+        "animate-in fade-in duration-700 fill-mode-both"
+      )}
+      style={{ animationDelay: `${index * 30}ms` }}
+      onClick={() => onClick(index)}
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
+        className="object-cover transition-all duration-500 group-hover:brightness-90"
+        loading={index < 6 ? "eager" : "lazy"}
+        quality={75}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement
+          target.src = "/placeholder.svg"
+        }}
+      />
+      
+      {/* IG Style Hover Overlay (Likes/Comments icons) */}
+      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6 text-white font-bold">
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <span>{((image.id * 137) % 400) + 100}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" />
+          </svg>
+          <span>{((image.id * 43) % 40) + 10}</span>
+        </div>
+      </div>
+    </div>
+  )
+})
+GalleryItem.displayName = "GalleryItem"
+
 export function GalleryContent() {
   const { t, language } = useLanguage()
   const [selectedImageIdx, setSelectedImageIdx] = useState<number | null>(null)
   const [isZoomed, setIsZoomed] = useState(false)
 
-  const openLightbox = (index: number) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+
+  const openLightbox = useCallback((index: number) => {
     setSelectedImageIdx(index)
     setIsZoomed(false)
+    setIsImageLoaded(false)
     document.body.style.overflow = "hidden"
-  }
+  }, [])
 
   const closeLightbox = () => {
     setSelectedImageIdx(null)
     setIsZoomed(false)
+    setIsImageLoaded(false)
     document.body.style.overflow = "unset"
   }
 
@@ -35,6 +91,7 @@ export function GalleryContent() {
     if (selectedImageIdx !== null) {
       setSelectedImageIdx((selectedImageIdx + 1) % galleryImages.length)
       setIsZoomed(false)
+      setIsImageLoaded(false)
     }
   }
 
@@ -42,6 +99,7 @@ export function GalleryContent() {
     if (selectedImageIdx !== null) {
       setSelectedImageIdx((selectedImageIdx - 1 + galleryImages.length) % galleryImages.length)
       setIsZoomed(false)
+      setIsImageLoaded(false)
     }
   }
 
@@ -108,45 +166,12 @@ export function GalleryContent() {
         {/* Gallery Grid - 1:1 Aspect Ratio */}
         <div className="grid grid-cols-3 gap-1 md:gap-8">
           {galleryImages.map((image, index) => (
-            <div
+            <GalleryItem
               key={image.id}
-              className={cn(
-                "group relative aspect-square overflow-hidden bg-gray-100 cursor-pointer rounded-2xl md:rounded-3xl",
-                "animate-in fade-in duration-700 fill-mode-both"
-              )}
-              style={{ animationDelay: `${index * 30}ms` }}
-              onClick={() => openLightbox(index)}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                className="object-cover transition-all duration-500 group-hover:brightness-90"
-                loading={index < 6 ? "eager" : "lazy"}
-                quality={75}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.src = "/placeholder.svg"
-                }}
-              />
-              
-              {/* IG Style Hover Overlay (Likes/Comments icons) */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-6 text-white font-bold">
-                <div className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                  </svg>
-                  <span>{((image.id * 137) % 400) + 100}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" />
-                  </svg>
-                  <span>{((image.id * 43) % 40) + 10}</span>
-                </div>
-              </div>
-            </div>
+              image={image}
+              index={index}
+              onClick={openLightbox}
+            />
           ))}
         </div>
       </div>
@@ -154,7 +179,7 @@ export function GalleryContent() {
       {/* Instagram Style Lightbox */}
       {selectedImageIdx !== null && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300 px-4 md:px-20"
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center animate-in fade-in duration-300 px-4 md:px-20"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeLightbox()
           }}
@@ -172,19 +197,44 @@ export function GalleryContent() {
           >
             {/* Image Section */}
             <div className="relative flex-[3] bg-black flex items-center justify-center group/img overflow-hidden">
+              {/* Cached Thumbnail Placeholder - Visible immediately from browser cache */}
+              {!isImageLoaded && (
+                 <Image
+                   src={galleryImages[selectedImageIdx].src}
+                   alt={galleryImages[selectedImageIdx].alt}
+                   fill
+                   sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                   className="object-contain blur-md scale-105 opacity-50"
+                   priority
+                 />
+              )}
+              
+              {/* High Quality Image */}
               <Image
                 src={galleryImages[selectedImageIdx].src}
                 alt={galleryImages[selectedImageIdx].alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 75vw"
+                sizes="(max-width: 768px) 100vw, 85vw"
                 className={cn(
-                  "object-contain transition-transform duration-300",
-                  isZoomed ? "scale-150 cursor-zoom-out" : "scale-100 cursor-zoom-in"
+                  "object-contain transition-opacity duration-300",
+                  isZoomed ? "scale-150 cursor-zoom-out" : "scale-100 cursor-zoom-in",
+                  isImageLoaded ? "opacity-100" : "opacity-0"
                 )}
                 onClick={() => setIsZoomed(!isZoomed)}
+                onLoad={() => setIsImageLoaded(true)}
                 priority
-                quality={75}
               />
+
+              {/* Preload Next Image */}
+              <div className="hidden">
+                <Image
+                  src={galleryImages[(selectedImageIdx + 1) % galleryImages.length].src}
+                  alt="preload"
+                  width={100}
+                  height={100}
+                  priority
+                />
+              </div>
               
               {!isZoomed && (
                 <>
