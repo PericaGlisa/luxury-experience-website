@@ -225,13 +225,20 @@ export function GalleryContent() {
                 priority
               />
 
-              {/* Preload Next Image */}
-              <div className="hidden">
+              {/* Preload Next and Previous Images */}
+              <div style={{ display: 'none' }}>
                 <Image
                   src={galleryImages[(selectedImageIdx + 1) % galleryImages.length].src}
-                  alt="preload"
-                  width={100}
-                  height={100}
+                  alt="preload next"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 85vw"
+                  priority
+                />
+                <Image
+                  src={galleryImages[(selectedImageIdx - 1 + galleryImages.length) % galleryImages.length].src}
+                  alt="preload prev"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 85vw"
                   priority
                 />
               </div>
