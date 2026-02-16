@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import { createContext, useContext, useMemo, type ReactNode } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { translations } from "./translations"
 
@@ -41,21 +41,18 @@ export function LanguageProvider({
   children: ReactNode
   initialLanguage?: Language
 }) {
-  const [language, setLanguageState] = useState<Language>(initialLanguage)
   const router = useRouter()
   const pathname = usePathname()
 
-  useEffect(() => {
-    if (!pathname) return
+  const language = useMemo<Language>(() => {
+    if (!pathname) return initialLanguage
     const segments = pathname.split("/")
     const lang = segments[1] as Language
-    if (lang === "en" || lang === "sr") {
-      setLanguageState(lang)
-    }
-  }, [pathname])
+    if (lang === "en" || lang === "sr") return lang
+    return initialLanguage
+  }, [pathname, initialLanguage])
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang)
     if (!pathname) return
     const segments = pathname.split("/")
     segments[1] = lang
