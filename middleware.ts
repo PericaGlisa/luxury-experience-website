@@ -31,11 +31,18 @@ const reverseTranslations: Record<string, Record<string, string>> = {
 }
 
 function getLocale(request: NextRequest): string {
-  const negotiatorHeaders: Record<string, string> = {}
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
+  try {
+    const negotiatorHeaders: Record<string, string> = {}
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
-  return matchLocale(languages, locales, defaultLocale)
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
+    if (!languages || languages.length === 0) {
+      return defaultLocale
+    }
+    return matchLocale(languages, locales, defaultLocale)
+  } catch {
+    return defaultLocale
+  }
 }
 
 export function middleware(request: NextRequest) {
